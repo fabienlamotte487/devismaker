@@ -1,0 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* BACKGROUND PRINCIPAL */
+body{
+    background: var(--secondary);
+}
+
+header{
+
+}
