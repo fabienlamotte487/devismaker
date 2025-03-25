@@ -35,22 +35,32 @@ header{
 main{
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     flex-direction: column;
+    margin: 5rem 20%;
 }
 
 /* SECTION */
 section{
     background: var(--white);
-    width: 60%; 
+    width: 100%; 
     border-radius: 28px;
     padding: 5rem;
     box-shadow: 5px 4px 16px -9px var(--dark);
-    margin-bottom: 10rem;
     display: none;
+    align-self: center;
+    box-sizing: border-box;
 }
 section.current-page{
     display: block;
+}
+
+nav{
+    background: var(--white);
+    width: auto; 
+    border-radius: 28px;
+    padding: 1.5rem 2rem;
+    box-shadow: 5px 4px 16px -9px var(--dark);
 }
 
 /* INPUT TEXT */
@@ -164,11 +174,14 @@ div input[type="file"]::file-selector-button{
     cursor: pointer;
     font-weight: bold;
 }
-.previous-button{
+#previous-button{
     background: var(--grey);
 }
+#previous-button:disabled{
+    cursor:auto ;
+}
 
-.next-button{
+#next-button{
     background: var(--primary);
 }
 
