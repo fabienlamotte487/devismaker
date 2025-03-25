@@ -7,9 +7,18 @@
     <title>devis-maker</title>
     <style>
         :root {
-        --primary: #F17960;
-        --secondary: #D9D9D9;
-        --dark: #000000;
+            --primary: #F17960;
+            --secondary: #D9D9D9;
+            --dark: #000000;
+            --white: white;
+            --grey: #F1F1F1;
+            --h1: 48px;
+            --h2: 32px;
+            --p: 16px;
+            --h1responsive: 22px;
+            --h2responsive: 16px;
+            --presponsive: 11px;
+            --inputHeight: 56px;
         }
     </style>
     <link rel="stylesheet" href="css/style.css" />
@@ -17,8 +26,56 @@
 <body>
     <header>
         <h1>Devis Maker</h1>
-        <img src="svg/file.svg" alt="Devis generator logo" title="Devis generator logo" height="25" width="25" />
     </header>
+    <main>
+        <section class="current-page">
+            <h2>Vos Informations de Contact</h2>
+            <form id="my_datas">
+                <div class="columned">
+                    <div>
+                        <div>
+                            <label for="my_company_name">Nom de l’entreprise*</label>
+                            <input type="text" id="my_company_name" name="my_company_name" required placeholder="" />
+                        </div>
+                        <div>
+                            <label for="my_adress">Adresse*</label>
+                            <input type="text" id="my_adress" name="adress" required placeholder="" />
+                        </div>
+                        <div class="columned">
+                            <div>
+                                <label for="my_postalcode">Code postal*</label>
+                                <input type="text" id="my_postalcode" name="postalcode" required placeholder="" />
+                            </div>
+                            <div>
+                                <label for="my_city">Ville*</label>
+                                <input type="text" id="my_city" name="city" required placeholder="" />
+                            </div>
+                        </div>
+                        <div>
+                            <label for="phonenumber">Numéro de téléphone*</label>
+                            <input type="text" id="phonenumber" name="phonenumber" required placeholder="" />
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label for="my_logo">Logo</label>
+                            <input type="file" id="my_logo" name="my_logo" required />
+                        </div>
+                        <div>
+                            <img src="" data_prev="my_logo" class="logo-prev" alt="" title="" />
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons-line">
+                    <button type="button" class="previous-button">Retour</button>
+                    <button type="submit" class="next-button">Continuer</button>
+                </div>
+            </form>
+        </section>
+        <section>
+            coucou
+        </section>
+    </main>
 
     <script type="text/javascript" src="js/class/Formulaire.js"></script>
     <script type="text/javascript" src="js/class/Navigator.js"></script>

@@ -3,19 +3,11 @@ class Navigator{
         this.page = 1;
         this.min = 1;
         this.max = document.querySelectorAll("section").length;
-        this.prevButton = document.getElementById("previous-button"); // Boutton de retour en arrière
-        this.nextButton = document.getElementById("next-button"); // Bouton de page suivante
         this.pagesElements = document.querySelectorAll("section"); // Liste des screens
         this.init(); // Lancement des évènnements à articuler
     }
 
     init(){
-        // On s'assure que les boutons sont bien présents par précaution
-        if (!this.prevButton || !this.nextButton) {
-            console.error("Les boutons n'ont pas été trouvés dans le DOM !");
-            return;
-        }
-
         this.updateButtons(); // Mise à jour de l'attribut disabled des boutons selon la page.
         this.updatePageVisibility();
     }
