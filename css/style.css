@@ -255,6 +255,13 @@ button{
 .trash-icon:hover{
     opacity: .7;
 }
+
+.delete-button{
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+}
 @media screen and (max-width: 992px) {
     .columned{
         flex-direction: column;

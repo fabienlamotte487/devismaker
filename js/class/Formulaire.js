@@ -85,7 +85,19 @@ class Formulaire {
             }
         });
 
-        return errors === 0;
+        if(errors === 0){
+            localStorage.setItem("my_company_name", this.inputsMyDatas[0].value);
+            localStorage.setItem("my_adress", this.inputsMyDatas[0].value);
+            localStorage.setItem("my_postalcode", this.inputsMyDatas[0].value);
+            localStorage.setItem("my_city", this.inputsMyDatas[0].value);
+            localStorage.setItem("my_phonenumber", this.inputsMyDatas[0].value);
+            localStorage.setItem("my_logo", this.inputsMyDatas[0].value);
+
+            return true;
+        } else {
+            return false
+        }
+
     }
 
     // Validation pour le second écran (Données du client)
@@ -98,7 +110,18 @@ class Formulaire {
             }
         });
 
-        return errors === 0;
+        if(errors === 0){
+            localStorage.setItem("customer_company_name", this.inputsCustomerDatas[0].value);
+            localStorage.setItem("customer_adress", this.inputsCustomerDatas[0].value);
+            localStorage.setItem("customer_postalcode", this.inputsCustomerDatas[0].value);
+            localStorage.setItem("customer_city", this.inputsCustomerDatas[0].value);
+            localStorage.setItem("customer_phonenumber", this.inputsCustomerDatas[0].value);
+            localStorage.setItem("customer_logo", this.inputsCustomerDatas[0].value);
+
+            return true;
+        } else {
+            return false
+        }
     }
     
     // Validation pour le troisième écran (Données produits)
@@ -117,7 +140,15 @@ class Formulaire {
         });
 
         if(errors === 0){
-            console.log("Formulaire valide");
+            let product = {
+                id: "id" + Math.random().toString(16).slice(2),
+                name: this.product_name.value,
+                quantity: this.product_quantity.value,
+                puht: this.product_puht.value,
+                tva: this.product_tva.value
+            };
+
+            newProductToBasket("basket", product);
         }
     }
     
@@ -160,9 +191,6 @@ class Formulaire {
 
     // Renvoi true si le codepostal est valide
     isValidPostalCode(postalcode){
-        console.log("Valeur de l'input: ", postalcode);
-        console.log("Test avec la regex", this.regexPostalCode.test(postalcode));
-        console.log("")
         return this.regexPostalCode.test(postalcode);
     }
 
