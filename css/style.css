@@ -42,14 +42,17 @@ main{
 
 /* SECTION */
 section{
+    display: none;
+}
+.white-block{
     background: var(--white);
     width: 100%; 
     border-radius: 28px;
-    padding: 5rem;
+    padding: 3rem;
     box-shadow: 5px 4px 16px -9px var(--dark);
-    display: none;
     align-self: center;
     box-sizing: border-box;
+    margin: 3rem 0;
 }
 
 section.current-page{
@@ -64,8 +67,11 @@ nav{
     box-shadow: 5px 4px 16px -9px var(--dark);
 }
 
-/* INPUT TEXT */
-input[type="text"]{
+input {
+    min-width: 150px;
+}
+/* INPUT TEXT / NUMBER */
+input[type="text"], input[type="number"]{
     background: var(--grey);
     border: none;
     outline: 1px solid #B1B1B1;
@@ -78,16 +84,16 @@ input[type="text"]{
     box-sizing: border-box;
 }
 
-input[type="text"]:focus-visible, input[type="file"]:focus-visible{
-    outline: 1px solid var(--primary);
+input[type="text"]:focus-visible, input[type="number"]:focus-visible, input[type="file"]:focus-visible{
+    outline: 1px solid var(--info);
 }
 
-div:has( > input[type="text"]){
+div:has( > input[type="text"]), div:has( > input[type="number"]){
     padding: 1rem 0;
     position: relative;
 }
 
-label:has( ~ input[type="text"]){
+label:has( ~ input[type="text"]), label:has( ~ input[type="number"]){
     position: absolute;
     z-index: 1;
     top: 2.2rem;
@@ -97,7 +103,8 @@ label:has( ~ input[type="text"]){
     transition: top 0.3s ease, left 0.3s ease, opacity 0.3s ease, font-size 0.3s ease;
 }
 
-label:has( ~ input[type="text"]:focus-visible), label:has( ~ input:not(:placeholder-shown)){
+label:has( ~ input[type="text"]:focus-visible), label:has( ~ input[type="text"]:not(:placeholder-shown)),
+label:has( ~ input[type="number"]:focus-visible), label:has( ~ input[type="number"]:not(:placeholder-shown)){
     top: 1.35rem;
     left: 1rem;
     opacity: .6;
@@ -150,10 +157,45 @@ div input[type="file"]::file-selector-button{
     opacity: 1;
 }
 
+/* TABLE */
+table{
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--dark);
+}
+
+table thead tr{
+    border-bottom: 1px solid black;
+}
+
+table thead tr th:not(:first-child):not(:last-child),
+table tbody tr td:not(:first-child):not(:last-child),
+table tfoot tr td:not(:first-child):not(:last-child){
+    border-right: 1px solid black;
+    padding: 1rem;
+}
+
+table thead tr,
+table tbody tr{
+    text-align: right;
+}
+
+table thead tr th:first-child,
+table tbody tr td:first-child{
+    text-align: left;
+}
+
+table thead tr th:last-child,
+table tbody tr td:last-child,
+table tfoot tr td{
+    text-align: center;
+}
+
 /* CLASS UTILITAIRES */
 .columned{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 2rem;
 }
 
@@ -168,33 +210,51 @@ div input[type="file"]::file-selector-button{
     font-style: italic;
 }
 
+.small-infos{
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
 .buttons-line{
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
-    margin-top: 3rem;
 }
 
-.buttons-line button{
+#basket_fill{
+    margin-top: 1rem;
+}
+
+button{
     border: none;
     border-radius: 50px;
     padding: 1rem 5rem;
     cursor: pointer;
     font-weight: bold;
+    height: 50px;
 }
 
-#previous-button{
+.button-secondary{
     background: var(--grey);
 }
 
-#previous-button:disabled{
+.button-secondary:disabled{
     cursor:auto ;
 }
 
-#next-button{
+.button-primary{
     background: var(--primary);
 }
+.trash-icon{
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+    transition: opacity .3s ease;
+}
 
+.trash-icon:hover{
+    opacity: .7;
+}
 @media screen and (max-width: 992px) {
     .columned{
         flex-direction: column;

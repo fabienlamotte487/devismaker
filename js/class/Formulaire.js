@@ -6,19 +6,32 @@ class Formulaire {
             this.productDatasValidator, 
             this.legalDatasValidator
         ];
+        this.basket_fill_button = document.getElementById("basket_fill");
         this.regexPhone = /^(0[1-9])(\d{8})$/;
         this.regexPostalCode = /^[0-9]{5}$/;
-        this.regexPhoneError = "Le numéro de téléphone n'est pas valide";
-        this.regexPostalCodeError = "Le code postal n'est pas valide";
+        this.regexPhoneError = "Le numéro de téléphone ne doit contenir qu'une série de 10 chiffres.";
+        this.regexPostalCodeError = "Le code postal ne doit contenir qu'une série de 5 chiffres.";
         this.invalidEmptyMessage = "Ce champ ne peut pas être vide";
         this.errorClassname = "error-message";
 
-        this.my_company_name = document.querySelector("#my_company_name");
-        this.my_adress = document.querySelector("#my_adress");
-        this.my_postalcode = document.querySelector("#my_postalcode");
-        this.my_city = document.querySelector("#my_city");
-        this.my_phonenumber = document.querySelector("#my_phonenumber");
-        this.my_logo = document.querySelector("#my_logo");
+        this.my_company_name = document.getElementById("my_company_name");
+        this.my_adress = document.getElementById("my_adress");
+        this.my_postalcode = document.getElementById("my_postalcode");
+        this.my_city = document.getElementById("my_city");
+        this.my_phonenumber = document.getElementById("my_phonenumber");
+        this.my_logo = document.getElementById("my_logo");
+        
+        this.customer_company_name = document.getElementById("customer_company_name");
+        this.customer_adress = document.getElementById("customer_adress");
+        this.customer_postalcode = document.getElementById("customer_postalcode");
+        this.customer_city = document.getElementById("customer_city");
+        this.customer_phonenumber = document.getElementById("customer_phonenumber");
+        this.customer_logo = document.getElementById("customer_logo");
+        
+        this.product_name = document.getElementById("product_name");
+        this.product_quantity = document.getElementById("product_quantity");
+        this.product_puht = document.getElementById("product_puht");
+        this.product_tva = document.getElementById("product_tva");
 
         this.inputsMyDatas = [
             this.my_company_name, 
@@ -28,20 +41,42 @@ class Formulaire {
             this.my_phonenumber, 
             this.my_logo
         ];
+        this.inputsCustomerDatas = [
+            this.customer_company_name, 
+            this.customer_adress, 
+            this.customer_postalcode, 
+            this.customer_city, 
+            this.customer_phonenumber, 
+            this.customer_logo
+        ];
+        this.inputsProductDatas = [
+            this.product_name, 
+            this.product_quantity, 
+            this.product_puht, 
+            this.product_tva, 
+        ];
         
         this.init();
     }
 
     init(){
-        [...this.inputsMyDatas].forEach(input => {   
+        [
+            ...this.inputsMyDatas, 
+            ...this.inputsCustomerDatas, 
+            ...this.inputsProductDatas
+        ].forEach(input => {
             input.addEventListener("keyup", () => {
                 this.validationLoop(input);
             });
         });
+
+        this.basket_fill_button.addEventListener("click", () => {
+            this.updateBasket();
+        });
     }
 
     // Validation pour le premier écran (Mes données)
-    myDatasValidator = () =>{
+    myDatasValidator = () => {
         let errors = 0;
         
         this.inputsMyDatas.forEach(input => {
@@ -54,8 +89,16 @@ class Formulaire {
     }
 
     // Validation pour le second écran (Données du client)
-    customerDatasValidator(){
-        return true;
+    customerDatasValidator = () => {
+        let errors = 0;
+        
+        this.inputsCustomerDatas.forEach(input => {
+            if(!this.validationLoop(input)){
+                errors++;
+            }
+        });
+
+        return errors === 0;
     }
     
     // Validation pour le troisième écran (Données produits)
@@ -63,10 +106,26 @@ class Formulaire {
         return true;
     }
     
+    // Validation du formulaire de remplissage du devis
+    updateBasket(){
+        let errors = 0;
+        
+        this.inputsProductDatas.forEach(input => {
+            if(!this.validationLoop(input)){
+                errors++;
+            }
+        });
+
+        if(errors === 0){
+            console.log("Formulaire valide");
+        }
+    }
+    
     // Validation pour le quatrième écran (Données légaux)
     legalDatasValidator(){
         return true;
     }
+
 
     // Fonction passerelle qui va vérifier toutes les données d'un écran
     validationLoop(input){

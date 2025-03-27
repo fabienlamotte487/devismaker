@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const navigator = new Navigator();
     const formulaire = new Formulaire();
+    const table = new Table();
 
     navigator.prevButton.addEventListener("click", () => {
         navigator.previous();

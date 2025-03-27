@@ -13,6 +13,7 @@
             --white: white;
             --grey: #F1F1F1;
             --error: #FF0000;
+            --info: #0b3071;
             --h1: 48px;
             --h2: 32px;
             --p: 16px;
@@ -30,7 +31,7 @@
         <h1>Devis Maker</h1>
     </header>
     <main>
-        <section class="current-page">
+        <section class="white-block">
             <h2>Vos Informations de Contact</h2>
             <form id="my_datas">
                 <div class="columned">
@@ -41,16 +42,16 @@
                         </div>
                         <div>
                             <label for="my_adress">Adresse*</label>
-                            <input type="text" id="my_adress" name="adress" required placeholder="" />
+                            <input type="text" id="my_adress" name="my_adress" required placeholder="" />
                         </div>
                         <div class="columned">
                             <div>
                                 <label for="my_postalcode">Code postal*</label>
-                                <input type="text" id="my_postalcode" name="postalcode" data-verif="postalcode" required placeholder="" />
+                                <input type="text" id="my_postalcode" name="my_postalcode" data-verif="postalcode" required placeholder="" />
                             </div>
                             <div>
                                 <label for="my_city">Ville*</label>
-                                <input type="text" id="my_city" name="city" required placeholder="" />
+                                <input type="text" id="my_city" name="my_city" required placeholder="" />
                             </div>
                         </div>
                         <div>
@@ -66,30 +67,145 @@
                         </div>
                     </div>
                 </div>
+                <small class="small-infos">Champs obligatoire*</small>
             </form>
         </section>
-        <section>
+        <section class="white-block">
+            <h2>Vos Informations de votre client</h2>
             <form id="customer_datas">
-
+                <div class="columned">
+                    <div>
+                        <div>
+                            <label for="customer_company_name">Nom de l’entreprise*</label>
+                            <input type="text" id="customer_company_name" name="customer_company_name" required placeholder="" />
+                        </div>
+                        <div>
+                            <label for="customer_adress">Adresse*</label>
+                            <input type="text" id="customer_adress" name="customer_adress" required placeholder="" />
+                        </div>
+                        <div class="columned">
+                            <div>
+                                <label for="customer_postalcode">Code postal*</label>
+                                <input type="text" id="customer_postalcode" name="customer_postalcode" data-verif="postalcode" required placeholder="" />
+                            </div>
+                            <div>
+                                <label for="customer_city">Ville*</label>
+                                <input type="text" id="customer_city" name="customer_city" required placeholder="" />
+                            </div>
+                        </div>
+                        <div>
+                            <label for="customer_phonenumber">Numéro de téléphone*</label>
+                            <input type="text" id="customer_phonenumber" name="customer_phonenumber" data-verif="phonenumber" required placeholder="" />
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label for="customer_logo">Logo</label>
+                            <input type="file" id="customer_logo" name="customer_logo" class="logo-file-input"  />
+                            <img src="" data_prev="customer_logo" class="logo-prev" alt="" title="" />
+                        </div>
+                    </div>
+                </div>
+                <small class="small-infos">Champs obligatoire*</small>
             </form>
         </section>
         <section>
-            <form id="products_datas">
-                
-            </form>
+            <div class="white-block">
+                <h2>Ajoutez vos produits ou services</h2>
+                <form id="products_datas">
+                    <div class="columned">
+                        <div>
+                            <label for="product_name">Nom du produit*</label>
+                            <input type="text" id="product_name" name="product_name" required placeholder="" />
+                        </div>
+                        <div>
+                            <label for="product_quantity">Quantité*</label>
+                            <input type="number" id="product_quantity" name="product_quantity" required placeholder="" />
+                        </div>
+                        <div>
+                            <label for="product_puht">Prix unitaire HT*</label>
+                            <input type="text" id="product_puht" name="product_puht" class="money" required placeholder="" />
+                        </div>
+                        <div>
+                            <label for="product_tva">TVA %*</label>
+                            <input type="number" id="product_tva" name="product_tva" required placeholder="" min="0" max="100" />
+                        </div>
+                        <button type="button" class="button-primary" id="basket_fill">Ajouter</button>
+                    </div>
+                </form>
+            </div>
+            <div class="white-block">
+                <h2>Résumé du devis</h2>
+                <table id="basket">
+                    <thead>
+                        <tr>
+                            <th>Nom du produit ou service</th>
+                            <th>Quantité</th>
+                            <th>Prix unitaire HT</th>
+                            <th>TVA %</th>
+                            <th>Prix TTC</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="basket_datas">
+                        <tr>
+                            <td>Produit A</td>
+                            <td>2</td>
+                            <td>50</td>
+                            <td>20</td>
+                            <td>120</td>
+                            <td><img src="./svg/trash.svg" class="trash-icon" /></td>
+                        </tr>
+                        <tr>
+                            <td>Service B</td>
+                            <td>1</td>
+                            <td>100</td>
+                            <td>5</td>
+                            <td>105</td>
+                            <td><img src="./svg/trash.svg" class="trash-icon" /></td>
+                        </tr>
+                        <tr>
+                            <td>Produit C</td>
+                            <td>3</td>
+                            <td>30</td>
+                            <td>10</td>
+                            <td>99</td>
+                            <td><img src="./svg/trash.svg" class="trash-icon" /></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4"></td>
+                            <td>Total HT</td>
+                            <td id="total_ht">0</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"></td>
+                            <td>Total TTC</td>
+                            <td id="total_ttc">0</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"></td>
+                            <td>Total TVA</td>
+                            <td id="total_tva">0</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
         </section>
-        <section>
+        <section class="white-block">
             <form id="legals_datas">
                 
             </form>
         </section>
         
         <nav class="buttons-line">
-            <button type="button" id="previous-button">Retour</button>
-            <button type="button" id="next-button">Continuer</button>
+            <button type="button" id="previous-button" class="button-secondary">Retour</button>
+            <button type="button" id="next-button" class="button-primary">Continuer</button>
         </nav>
     </main>
 
+    <script type="text/javascript" src="js/class/Table.js"></script>
     <script type="text/javascript" src="js/class/Formulaire.js"></script>
     <script type="text/javascript" src="js/class/Navigator.js"></script>
     <script type="text/javascript" src="js/functions.js"></script>

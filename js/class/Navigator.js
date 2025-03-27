@@ -1,6 +1,6 @@
 class Navigator{
     constructor(){
-        this.page = 1;
+        this.page = 3;
         this.min = 1;
         this.max = document.querySelectorAll("section").length;
         this.prevButton = document.getElementById("previous-button"); // Boutton de retour en arrière
