@@ -16,3 +16,11 @@ function prevImage(e){
         reader.readAsDataURL(input.files[0]);
     }
 }
+
+function fileInput(){
+    let fileInputs = document.querySelectorAll("input[type='file'].logo-file-input");
+
+    fileInputs.forEach(input => {
+        input.addEventListener("change", prevImage);
+    });
+}

@@ -51,6 +51,7 @@ section{
     align-self: center;
     box-sizing: border-box;
 }
+
 section.current-page{
     display: block;
 }
@@ -77,7 +78,7 @@ input[type="text"]{
     box-sizing: border-box;
 }
 
-input[type="text"]:focus-visible{
+input[type="text"]:focus-visible, input[type="file"]:focus-visible{
     outline: 1px solid var(--primary);
 }
 
@@ -107,12 +108,7 @@ label:has( ~ input[type="text"]:focus-visible), label:has( ~ input:not(:placehol
 div:has( > input[type="file"]){
     position: relative;
     padding: 1rem 0;
-    cursor: pointer;
     transition: opacity .3s ease;
-}
-
-div:has( > input[type="file"]):hover{
-    opacity: 0.7;
 }
 
 div:has( > input[type="file"]) label{
@@ -143,10 +139,15 @@ div input[type="file"]::file-selector-button{
 }
 
 .logo-prev{
-    width: 250px;
-    height: 250px;
-    object-fit: contain;
-    background:red;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-top: 2rem;
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+.logo-prev.show{
+    opacity: 1;
 }
 
 /* CLASS UTILITAIRES */
@@ -158,6 +159,13 @@ div input[type="file"]::file-selector-button{
 
 .columned > div{
     flex: 1;
+}
+
+.error-message{
+    color: var(--error);
+    font-size: var(--errorMessage);
+    margin-top: 0.5rem;
+    font-style: italic;
 }
 
 .buttons-line{
@@ -174,9 +182,11 @@ div input[type="file"]::file-selector-button{
     cursor: pointer;
     font-weight: bold;
 }
+
 #previous-button{
     background: var(--grey);
 }
+
 #previous-button:disabled{
     cursor:auto ;
 }

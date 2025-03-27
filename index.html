@@ -12,9 +12,11 @@
             --dark: #000000;
             --white: white;
             --grey: #F1F1F1;
+            --error: #FF0000;
             --h1: 48px;
             --h2: 32px;
             --p: 16px;
+            --errorMessage: 14px;
             --h1responsive: 22px;
             --h2responsive: 16px;
             --presponsive: 11px;
@@ -44,7 +46,7 @@
                         <div class="columned">
                             <div>
                                 <label for="my_postalcode">Code postal*</label>
-                                <input type="text" id="my_postalcode" name="postalcode" required placeholder="" />
+                                <input type="text" id="my_postalcode" name="postalcode" data-verif="postalcode" required placeholder="" />
                             </div>
                             <div>
                                 <label for="my_city">Ville*</label>
@@ -52,16 +54,14 @@
                             </div>
                         </div>
                         <div>
-                            <label for="phonenumber">Numéro de téléphone*</label>
-                            <input type="text" id="phonenumber" name="phonenumber" required placeholder="" />
+                            <label for="my_phonenumber">Numéro de téléphone*</label>
+                            <input type="text" id="my_phonenumber" name="my_phonenumber" data-verif="phonenumber" required placeholder="" />
                         </div>
                     </div>
                     <div>
                         <div>
                             <label for="my_logo">Logo</label>
-                            <input type="file" id="my_logo" name="my_logo"  />
-                        </div>
-                        <div>
+                            <input type="file" id="my_logo" name="my_logo" class="logo-file-input"  />
                             <img src="" data_prev="my_logo" class="logo-prev" alt="" title="" />
                         </div>
                     </div>
@@ -69,7 +69,19 @@
             </form>
         </section>
         <section>
-            coucou
+            <form id="customer_datas">
+
+            </form>
+        </section>
+        <section>
+            <form id="products_datas">
+                
+            </form>
+        </section>
+        <section>
+            <form id="legals_datas">
+                
+            </form>
         </section>
         
         <nav class="buttons-line">

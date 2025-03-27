@@ -16,6 +16,7 @@ class Navigator{
             return;
         }
 
+        // this.addButtonsclickCapabilities();
         this.updateButtons(); // Mise à jour de l'attribut disabled des boutons selon la page.
         this.updatePageVisibility();
     }
@@ -61,10 +62,10 @@ class Navigator{
             currentPage.classList.remove("current-page");
         }
 
-        this.pagesElements[this.getPage()].classList.add("current-page");
+        this.pagesElements[this.getPageIndex()].classList.add("current-page");
     }
 
-    getPage(){
+    getPageIndex(){
         return this.page-1;
     }
 }
