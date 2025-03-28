@@ -59,16 +59,10 @@ class Table{
         return data.puht * data.quantity * (1 + data.tva / 100);
     }
 
-    formate_money(value){
+    formate_money(value) {
         let number = parseFloat(value.toString().replace(',', '.'));
-        return number.toFixed(2) + " €";
-    }
-
-    // FONCTIONS 
-        // Insert une ligne dans le tableau
-        // Supprime une ligne dans le tableau
-        // Recalcule les différents montants totaux
-        // Fonctionnement des boutons + et - dans le tableau => Modifie la quantité et les montant avec la fonction au-dessus
-        // Formate les montants en euros pour les données avec currency
+        if (isNaN(number)) return "0,00 €";
         
+        return number.toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + " €";
+    }
 }
