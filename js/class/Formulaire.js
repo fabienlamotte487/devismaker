@@ -150,6 +150,7 @@ class Formulaire {
 
             newProductToBasket("basket", product);
             this.cleanInput(this.inputsProductDatas);
+            this.inputsProductDatas[0].focus();
         }
     }
 
