@@ -4,7 +4,7 @@ class Table{
         this.totalHT = document.getElementById("total_ht");
         this.totalTTC = document.getElementById("total_ttc");
         this.totalTVA = document.getElementById("total_tva");
-        this.remove_basket_button = document.getElementById("delete_basket");
+        this.clearButton = document.getElementById("delete_basket");
 
         this.init();
     }
@@ -13,33 +13,33 @@ class Table{
         // Cet évènnement custom s'apprête à ajouter lui même la ligne dès qu'un produit est ajouté correctement
         window.addEventListener('newProductToBasket', (e) => {
             const { key, newObject } = e.detail;
-            this.addLineToTable(newObject);
+            this.addLine(newObject);
         });
 
-        this.remove_basket_button.addEventListener("click", () => {
-            this.deleteBasket();
+        this.clearButton.addEventListener("click", () => {
+            this.removeBasket();
         });
 
         window.addEventListener("click", (e) => {
             if(e.target.closest("button") && e.target.closest("button").classList.contains("delete-button")) {
                 let idToRemove = e.target.closest("button").getAttribute("data_id");
                 removeProductToBasket("basket", { id: idToRemove });
-                this.deleteLineToBasket(e.target);
+                this.removeLine(e.target);
             }
         });
 
-        this.fetchData();
+        this.fill();
     }
 
-    fetchData(){
+    fill(){
         let datas = JSON.parse(localStorage.getItem("basket")) || [];
         datas.forEach(data => {
-            this.addLineToTable(data);
+            this.addLine(data);
         });
         this.updateTotal();
     }
 
-    addLineToTable(data){
+    addLine(data){
         let tr = document.createElement("tr");
         tr.innerHTML = `
             <td>${data.name}</td>
@@ -55,17 +55,37 @@ class Table{
         `;
         this.tableBody.appendChild(tr);
         this.updateTotal();
+        this.revealClearButton();
     }
 
-    deleteBasket(){
+    removeLine(target){
+        target.closest("tr").remove();
+        this.updateTotal();
+        let datas = JSON.parse(localStorage.getItem("basket")) || [];
+        if(datas.length === 0){
+            this.hideClearButton();
+        }
+    }
+
+    revealClearButton(){
+        console.log("On révèle le bouton clear");
+        if(!this.clearButton.classList.contains("show")){
+            this.clearButton.classList.add("show");
+        }
+    }
+
+    hideClearButton(){
+        console.log("On cache le bouton clear");
+        if(this.clearButton.classList.contains("show")){
+            this.clearButton.classList.remove("show");
+        }
+    }
+
+    removeBasket(){
         localStorage.removeItem("basket");
         this.tableBody.innerHTML = ""; // On vide le tableau
         this.updateTotal();
-    }
-
-    deleteLineToBasket(target){
-        target.closest("tr").remove();
-        this.updateTotal();
+        this.hideClearButton();
     }
 
     updateTotal(){
