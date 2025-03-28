@@ -34,7 +34,8 @@ body{
 
 header{
     background-image: url("./../png/headerback.png");
-    background-size: contain;
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     height: 260px;
     padding: 2rem;
@@ -51,7 +52,9 @@ main{
 /* SECTION */
 section{
     display: none;
+    width: 100%;
 }
+
 .white-block{
     background: var(--white);
     width: 100%; 
@@ -295,6 +298,9 @@ button{
     padding: 0;
 }
 @media screen and (max-width: 992px) {
+    main{
+        margin: 0 10%;
+    }
     .columned{
         flex-direction: column;
         gap:0;
@@ -307,6 +313,8 @@ button{
     }
     h1{
         font-size: var(--h1responsive);
+        margin-top: 3rem;
+        margin-left: 3rem;
     }
     h2{
         font-size: var(--h2responsive);
