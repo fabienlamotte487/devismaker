@@ -184,7 +184,8 @@ table tfoot tr td:not(:first-child):not(:last-child){
 }
 
 table thead tr,
-table tbody tr{
+table tbody tr,
+table tfoot tr td{
     text-align: right;
 }
 
@@ -194,8 +195,8 @@ table tbody tr td:first-child{
 }
 
 table thead tr th:last-child,
-table tbody tr td:last-child,
-table tfoot tr td{
+table tbody tr td:last-child
+{
     text-align: center;
 }
 

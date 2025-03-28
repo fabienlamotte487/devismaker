@@ -20,6 +20,14 @@ class Table{
             this.deleteBasket();
         });
 
+        window.addEventListener("click", (e) => {
+            if(e.target.closest("button") && e.target.closest("button").classList.contains("delete-button")) {
+                let idToRemove = e.target.closest("button").getAttribute("data_id");
+                removeProductToBasket("basket", { id: idToRemove });
+                this.deleteLineToBasket(e.target);
+            }
+        });
+
         this.fetchData();
     }
 
@@ -28,6 +36,7 @@ class Table{
         datas.forEach(data => {
             this.addLineToTable(data);
         });
+        this.updateTotal();
     }
 
     addLineToTable(data){
@@ -45,14 +54,36 @@ class Table{
             </td>
         `;
         this.tableBody.appendChild(tr);
+        this.updateTotal();
     }
 
     deleteBasket(){
         localStorage.removeItem("basket");
         this.tableBody.innerHTML = ""; // On vide le tableau
-        this.totalHT.innerHTML = "0.00 €"; // On remet les totaux à zéro
-        this.totalTTC.innerHTML = "0.00 €";
-        this.totalTVA.innerHTML = "0.00 €";
+        this.updateTotal();
+    }
+
+    deleteLineToBasket(target){
+        target.closest("tr").remove();
+        this.updateTotal();
+    }
+
+    updateTotal(){
+        let datas = JSON.parse(localStorage.getItem("basket")) || [];
+
+        let totalHT = 0;
+        let totalTTC = 0;
+        let totalTVA = 0;
+
+        datas.forEach(data => {
+            totalHT += data.puht * data.quantity;
+            totalTTC += this.calcul_ttc(data);
+            totalTVA += (data.tva / 100) * data.puht * data.quantity;
+        });
+
+        this.totalHT.innerHTML = this.formate_money(totalHT);
+        this.totalTTC.innerHTML = this.formate_money(totalTTC);
+        this.totalTVA.innerHTML = this.formate_money(totalTVA);
     }
 
     calcul_ttc(data){
