@@ -4,6 +4,7 @@ class Table{
         this.totalHT = document.getElementById("total_ht");
         this.totalTTC = document.getElementById("total_ttc");
         this.totalTVA = document.getElementById("total_tva");
+        this.remove_basket_button = document.getElementById("delete_basket");
 
         this.init();
     }
@@ -13,6 +14,10 @@ class Table{
         window.addEventListener('newProductToBasket', (e) => {
             const { key, newObject } = e.detail;
             this.addLineToTable(newObject);
+        });
+
+        this.remove_basket_button.addEventListener("click", () => {
+            this.deleteBasket();
         });
 
         this.fetchData();
@@ -40,6 +45,14 @@ class Table{
             </td>
         `;
         this.tableBody.appendChild(tr);
+    }
+
+    deleteBasket(){
+        localStorage.removeItem("basket");
+        this.tableBody.innerHTML = ""; // On vide le tableau
+        this.totalHT.innerHTML = "0.00 €"; // On remet les totaux à zéro
+        this.totalTTC.innerHTML = "0.00 €";
+        this.totalTVA.innerHTML = "0.00 €";
     }
 
     calcul_ttc(data){

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    new Table();
+    const table = new Table();
     const navigator = new Navigator();
     const formulaire = new Formulaire();
 

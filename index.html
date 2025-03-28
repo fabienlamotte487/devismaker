@@ -12,7 +12,7 @@
             --dark: #000000;
             --white: white;
             --grey: #F1F1F1;
-            --error: #FF0000;
+            --error: #ea251e;
             --info: #0b3071;
             --h1: 48px;
             --h2: 32px;
@@ -112,7 +112,6 @@
         <section>
             <div class="white-block">
                 <h2>Ajoutez vos produits ou services</h2>
-                <button onClick="localStorage.clear()">clear</button>
                 <form id="products_datas">
                     <div class="columned">
                         <div>
@@ -136,7 +135,10 @@
                 </form>
             </div>
             <div class="white-block">
-                <h2>Résumé du devis</h2>
+                <div class="row">
+                    <h2>Résumé du devis</h2>
+                    <button type="button" id="delete_basket">Vider le panier</button>
+                </div>
                 <table id="basket">
                     <thead>
                         <tr>

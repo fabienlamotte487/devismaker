@@ -19,6 +19,14 @@ h2{
     margin-bottom: 3rem;
 }
 
+.row{
+    margin-bottom: 3rem;
+}
+
+.row h2{
+    margin-bottom: 0;
+}
+
 /* BACKGROUND PRINCIPAL */
 body{
     background: var(--secondary);
@@ -245,11 +253,24 @@ button{
 .button-primary{
     background: var(--primary);
 }
+
+#delete_basket{
+    background: var(--error);
+    color: white;
+}
+
 .trash-icon{
     height: 25px;
     width: 25px;
     cursor: pointer;
     transition: opacity .3s ease;
+}
+
+.row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
 }
 
 .trash-icon:hover{
