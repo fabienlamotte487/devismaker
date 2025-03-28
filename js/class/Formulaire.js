@@ -149,6 +149,19 @@ class Formulaire {
             };
 
             newProductToBasket("basket", product);
+            this.cleanInput(this.inputsProductDatas);
+        }
+    }
+
+    cleanInput(inputs){
+        if(inputs.length > 0){
+            inputs.forEach(input => {
+                input.value = "";
+                this.cleanError(input);
+            });
+        } else {
+            inputs.value = "";
+            this.cleanError(inputs);
         }
     }
     
@@ -156,7 +169,6 @@ class Formulaire {
     legalDatasValidator(){
         return true;
     }
-
 
     // Fonction passerelle qui va vérifier toutes les données d'un écran
     validationLoop(input){
@@ -180,7 +192,9 @@ class Formulaire {
             return false;
         }
 
+        // Si les données sont correctes, on supprime le message d'erreur
         this.cleanError(input);
+        // Puis on renvoi true
         return true;
     }
 
