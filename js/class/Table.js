@@ -59,7 +59,7 @@ class Table{
                 let product = getItemFromBasket("basket", { id: idToModif });
                 let newQuantity = e.target.classList.contains("plus") ? parseInt(product.quantity) + 1 : parseInt(product.quantity) - 1;
                 product.quantity = newQuantity;
-                updateItemFromBasket("basket", product);
+                updateItemQuantityFromBasket("basket", product);
                 this.fill();
             }
         });

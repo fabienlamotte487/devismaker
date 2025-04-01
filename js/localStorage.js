@@ -1,13 +1,13 @@
 // Fonction pour ajouter un objet à un tableau dans localStorage
 function newProductToBasket(key, newObject) {
     // Récupérer le tableau existant depuis localStorage
-    let existingArray = JSON.parse(localStorage.getItem(key)) || [];
+    let basket = JSON.parse(localStorage.getItem(key)) || [];
 
     // Ajouter le nouvel objet au tableau
-    existingArray.push(newObject);
+    basket.push(newObject);
 
     // Sauvegarder le tableau mis à jour dans localStorage
-    localStorage.setItem(key, JSON.stringify(existingArray));
+    localStorage.setItem(key, JSON.stringify(basket));
 
     // Déclencher un événement personnalisé
     const event = new CustomEvent('newProductToBasket', {
@@ -20,10 +20,10 @@ function newProductToBasket(key, newObject) {
 // Fonction pour supprimer un objet à un tableau dans localStorage
 function removeProductToBasket(key, newObject) {
     // Récupérer le tableau existant depuis localStorage
-    let existingArray = JSON.parse(localStorage.getItem(key)) || [];
+    let basket = JSON.parse(localStorage.getItem(key)) || [];
 
     // Ajouter le nouvel objet au tableau
-    let newArray = existingArray.filter((obj) => obj.id !== newObject.id);
+    let newArray = basket.filter((obj) => obj.id !== newObject.id);
 
     // Sauvegarder le tableau mis à jour dans localStorage
     localStorage.setItem(key, JSON.stringify(newArray));
@@ -38,19 +38,19 @@ function removeProductToBasket(key, newObject) {
 
 function getItemFromBasket(key, newObject) {
     // Récupérer le tableau existant depuis localStorage
-    let existingArray = JSON.parse(localStorage.getItem(key)) || [];
+    let basket = JSON.parse(localStorage.getItem(key)) || [];
 
     // Ajouter le nouvel objet au tableau
-    let newArray = existingArray.filter((obj) => obj.id === newObject.id);
+    let newArray = basket.filter((obj) => obj.id === newObject.id);
     return newArray[0];
 }
 
 function updateItemFromBasket(key, newObject) {
     // Récupérer le tableau existant depuis localStorage
-    let existingArray = JSON.parse(localStorage.getItem(key)) || [];
+    let basket = JSON.parse(localStorage.getItem(key)) || [];
 
     // Ajouter le nouvel objet au tableau
-    let newArray = existingArray.map((obj) => {
+    let newArray = basket.map((obj) => {
         if(obj.id === newObject.id) {
             return newObject;
         } else {
@@ -62,23 +62,18 @@ function updateItemFromBasket(key, newObject) {
     localStorage.setItem(key, JSON.stringify(newArray));
 }
 
-function updateItemQuantity(key, newObject, state){
+function updateItemQuantityFromBasket(key, newObject) {
     // Récupérer le tableau existant depuis localStorage
-    let existingArray = JSON.parse(localStorage.getItem(key, newObject)) || [];
+    let basket = JSON.parse(localStorage.getItem(key)) || [];
 
-    if(state == "minus" && newObject.quantity <= 1) {
+    if(newObject.quantity <= 0) {
         removeProductToBasket(key, newObject);
         return;
     }
 
     // Ajouter le nouvel objet au tableau
-    let newArray = existingArray.map((obj) => {
+    let newArray = basket.map((obj) => {
         if(obj.id === newObject.id) {
-            if(state == "plus"){
-                newObject.quantity = parseInt(obj.quantity) + 1;
-            } else {
-                newObject.quantity = parseInt(obj.quantity) - 1;
-            }
             return newObject;
         } else {
             return obj;
@@ -86,15 +81,16 @@ function updateItemQuantity(key, newObject, state){
     });
 
     // Sauvegarder le tableau mis à jour dans localStorage
-    localStorage.setItem(key, newObject, JSON.stringify(newArray));
+    localStorage.setItem(key, JSON.stringify(newArray));
 }
 
 function isBaskedFilled(){
     let basket = JSON.parse(localStorage.getItem("basket")) || [];
 
     if(basket.length === 0) {
-        alert('Le panier de votre devis ne peut pas être vide !')
+        alert('Le panier de votre devis ne peut pas être vide !');
+        return false;
     }
 
-    return basket.length > 0;
+    return true;
 }
