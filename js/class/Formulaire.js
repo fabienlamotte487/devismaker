@@ -126,7 +126,7 @@ class Formulaire {
     
     // Validation pour le troisième écran (Données produits)
     productDatasValidator(){
-        return true;
+        return isBaskedFilled();
     }
     
     // Validation du formulaire de remplissage du devis

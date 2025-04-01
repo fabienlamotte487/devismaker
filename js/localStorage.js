@@ -88,3 +88,13 @@ function updateItemQuantity(key, newObject, state){
     // Sauvegarder le tableau mis à jour dans localStorage
     localStorage.setItem(key, newObject, JSON.stringify(newArray));
 }
+
+function isBaskedFilled(){
+    let basket = JSON.parse(localStorage.getItem("basket")) || [];
+
+    if(basket.length === 0) {
+        alert('Le panier de votre devis ne peut pas être vide !')
+    }
+
+    return basket.length > 0;
+}
