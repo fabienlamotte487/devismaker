@@ -35,3 +35,29 @@ function removeProductToBasket(key, newObject) {
     
     window.dispatchEvent(event);
 }
+
+function getItemFromBasket(key, newObject) {
+    // Récupérer le tableau existant depuis localStorage
+    let existingArray = JSON.parse(localStorage.getItem(key)) || [];
+
+    // Ajouter le nouvel objet au tableau
+    let newArray = existingArray.filter((obj) => obj.id === newObject.id);
+    return newArray[0];
+}
+
+function updateItemFromBasket(key, newObject) {
+    // Récupérer le tableau existant depuis localStorage
+    let existingArray = JSON.parse(localStorage.getItem(key)) || [];
+
+    // Ajouter le nouvel objet au tableau
+    let newArray = existingArray.map((obj) => {
+        if(obj.id === newObject.id) {
+            return newObject;
+        } else {
+            return obj;
+        }
+    });
+
+    // Sauvegarder le tableau mis à jour dans localStorage
+    localStorage.setItem(key, JSON.stringify(newArray));
+}

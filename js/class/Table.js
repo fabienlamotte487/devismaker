@@ -5,6 +5,8 @@ class Table{
         this.totalTTC = document.getElementById("total_ttc");
         this.totalTVA = document.getElementById("total_tva");
         this.clearButton = document.getElementById("delete_basket");
+        this.modalProduct = document.getElementById("modif_modal");
+        this.modalProductValidate = document.getElementById("modif_product_validate");
 
         this.init();
     }
@@ -18,13 +20,38 @@ class Table{
 
         this.clearButton.addEventListener("click", () => {
             this.removeBasket();
+            this.clearBasketCache();
+        });
+
+        this.modalProductValidate.addEventListener("click", () => {
+            this.validateModal();
+            this.fill();
+            this.closeModal();
         });
 
         window.addEventListener("click", (e) => {
+            // Click sur le bouton de suppression d'une ligne
             if(e.target.closest("button") && e.target.closest("button").classList.contains("delete-button")) {
                 let idToRemove = e.target.closest("button").getAttribute("data_id");
                 removeProductToBasket("basket", { id: idToRemove });
                 this.removeLine(e.target);
+            }
+
+            // Click sur le bouton de modification d'une ligne
+            if(e.target.closest("button") && e.target.closest("button").classList.contains("edit-button")) {
+                let idToModif = e.target.closest("button").getAttribute("data_id");
+                let product = getItemFromBasket("basket", { id: idToModif });
+                this.showModal(product);
+            }
+
+            // Click sur le bouton de fermeture de la modale
+            if(e.target.closest("button") 
+                && (
+                    e.target.closest("button").classList.contains("close-modal")  
+                    || e.target.closest("button").id == "modif_product_cancel"
+                ) 
+                || e.target.classList.contains("background")){
+                this.closeModal();
             }
         });
 
@@ -33,6 +60,7 @@ class Table{
 
     // Remplit le tableau avec les données du panier
     fill(){
+        this.removeBasket();
         let datas = JSON.parse(localStorage.getItem("basket")) || [];
         datas.forEach(data => {
             this.addLine(data);
@@ -51,6 +79,9 @@ class Table{
             <td>${data.tva} %</td>
             <td>${this.formate_money(this.calcul_ttc(data))}</td>
             <td>
+                <button type="button" class="edit-button" data_id="${data.id}">
+                    <img src="./svg/edit.svg" class="edit-icon" alt="Modifier le produit" title="Modifier le produit" />
+                </button>
                 <button type="button" class="delete-button" data_id="${data.id}">
                     <img src="./svg/trash.svg" class="trash-icon" alt="Supprimer le produit" title="Supprimer le produit" />
                 </button>
@@ -88,10 +119,13 @@ class Table{
 
     // Supprime le panier et vide le tableau
     removeBasket(){
-        localStorage.removeItem("basket");
         this.tableBody.innerHTML = ""; // On vide le tableau
         this.updateTotal();
         this.hideClearButton();
+    }
+
+    clearBasketCache(){
+        localStorage.removeItem("basket");
     }
 
     // Met à jour les totaux HT, TTC et TVA
@@ -126,5 +160,40 @@ class Table{
         if (isNaN(number)) return "0,00 €";
         
         return number.toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + " €";
+    }
+
+    // Affiche la modale de modification d'un produit
+    // @param {Object} data - L'objet contenant les données du produit
+    showModal(data){
+        this.modalProduct.classList.add("show");
+        this.modalProduct.querySelector("#modif_product_name").value = data.name;
+        this.modalProduct.querySelector("#modif_product_quantity").value = data.quantity;
+        this.modalProduct.querySelector("#modif_product_puht").value = data.puht;
+        this.modalProduct.querySelector("#modif_product_tva").value = data.tva;
+        this.modalProduct.querySelector("#modif_product_validate").setAttribute("data_id_to_edit", data.id);
+
+        let title = this.modalProduct.querySelector(".modal-content h2");
+        title.innerHTML = `Modifier le produit "${data.name}"`;
+    }
+
+    // Ferme la modale de modification d'un produit
+    closeModal(){
+        this.modalProduct.classList.remove("show");
+        this.modalProduct.querySelector("#modif_product_name").value = "";
+        this.modalProduct.querySelector("#modif_product_quantity").value = 1;
+        this.modalProduct.querySelector("#modif_product_puht").value = 0;
+        this.modalProduct.querySelector("#modif_product_tva").value = 20;
+    }
+
+    validateModal(){
+        let idToEdit = this.modalProduct.querySelector("#modif_product_validate").getAttribute("data_id_to_edit");
+        let item = {
+            id: idToEdit,
+            name: this.modalProduct.querySelector("#modif_product_name").value,
+            quantity: this.modalProduct.querySelector("#modif_product_quantity").value,
+            puht: this.modalProduct.querySelector("#modif_product_puht").value,
+            tva: this.modalProduct.querySelector("#modif_product_tva").value
+        };
+        updateItemFromBasket("basket", item);
     }
 }

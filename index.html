@@ -177,6 +177,38 @@
                 
             </form>
         </section>
+        <div class="modal" id="modif_modal">
+            <div class="background"></div>
+            <div class="modal-content white-block">
+                <h2>Modifier le produit</h2>
+                <button type="button" id="modif_product_close" class="close-modal">X</button>
+
+                <form id="modif_product_datas">
+                    <div class="columned">
+                        <div>
+                            <label for="modif_product_name">Nom du produit*</label>
+                            <input type="text" id="modif_product_name" name="modif_product_name" required placeholder="" />
+                        </div>
+                        <div>
+                            <label for="modif_product_quantity">Quantité*</label>
+                            <input type="number" id="modif_product_quantity" name="modif_product_quantity" required placeholder="" />
+                        </div>
+                        <div>
+                            <label for="modif_product_puht">Prix unitaire HT*</label>
+                            <input type="text" id="modif_product_puht" name="modif_product_puht" class="money" required placeholder="" />
+                        </div>
+                        <div>
+                            <label for="modif_product_tva">TVA %*</label>
+                            <input type="number" id="modif_product_tva" name="modif_product_tva" required placeholder="" min="0" max="100" />
+                        </div>
+                    </div>
+                    <div class="modal-buttons">
+                        <button type="button" id="modif_product_cancel" class="button-secondary">Annuler</button>
+                        <button type="button" id="modif_product_validate" class="button-primary">Valider</button>
+                    </div>
+                </form>
+            </div>
+        </div>
         
         <nav class="buttons-line">
             <button type="button" id="previous-button" class="button-secondary">Retour</button>
