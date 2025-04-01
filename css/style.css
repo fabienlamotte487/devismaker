@@ -81,6 +81,7 @@ nav{
 input {
     min-width: 150px;
 }
+
 /* INPUT TEXT / NUMBER */
 input[type="text"], input[type="number"]{
     background: var(--grey);
@@ -173,6 +174,8 @@ table{
     width: 100%;
     border-collapse: collapse;
     color: var(--dark);
+    overflow-x: scroll;
+    min-width: auto;
 }
 
 table thead tr{
@@ -190,6 +193,10 @@ table thead tr,
 table tbody tr,
 table tfoot tr td{
     text-align: right;
+}
+
+table tbody tr td{
+    white-space: nowrap;
 }
 
 table thead tr th:first-child,
@@ -240,7 +247,7 @@ table tbody tr td:last-child
 button{
     border: none;
     border-radius: 50px;
-    padding: 1rem 5rem;
+    padding: .5rem 3rem;
     cursor: pointer;
     font-weight: bold;
     height: 50px;
@@ -285,6 +292,7 @@ button{
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0;
+    flex-wrap: wrap;
 }
 
 .trash-icon:hover{
@@ -311,6 +319,10 @@ button{
     * {
         font-size: var(--presponsive);
     }
+    main{
+        margin: 0 5%;
+        align-items: center;
+    }
     h1{
         font-size: var(--h1responsive);
         margin-top: 3rem;
@@ -322,5 +334,8 @@ button{
     header{
         background-image: url("./../png/headerbackmobile.png");
         height: 200px;
+    }
+    button{
+        padding: 1rem 3rem;
     }
 }

@@ -9,8 +9,8 @@ class Table{
         this.init();
     }
 
+    // Initialise les évènements
     init = () => {
-        // Cet évènnement custom s'apprête à ajouter lui même la ligne dès qu'un produit est ajouté correctement
         window.addEventListener('newProductToBasket', (e) => {
             const { key, newObject } = e.detail;
             this.addLine(newObject);
@@ -31,6 +31,7 @@ class Table{
         this.fill();
     }
 
+    // Remplit le tableau avec les données du panier
     fill(){
         let datas = JSON.parse(localStorage.getItem("basket")) || [];
         datas.forEach(data => {
@@ -39,6 +40,8 @@ class Table{
         this.updateTotal();
     }
 
+    // Ajoute une ligne au tableau
+    // @param {Object} data - L'objet contenant les données du produit
     addLine(data){
         let tr = document.createElement("tr");
         tr.innerHTML = `
@@ -58,6 +61,8 @@ class Table{
         this.revealClearButton();
     }
 
+    // Supprime une ligne du tableau
+    // @param {HTMLElement} target - L'élément qui a déclenché l'évènement (le bouton de suppression)
     removeLine(target){
         target.closest("tr").remove();
         this.updateTotal();
@@ -67,20 +72,21 @@ class Table{
         }
     }
 
+    // Affiche le bouton de suppression du panier si le tableau n'est pas vide
     revealClearButton(){
-        console.log("On révèle le bouton clear");
         if(!this.clearButton.classList.contains("show")){
             this.clearButton.classList.add("show");
         }
     }
 
+    // Cache le bouton de suppression du panier si le tableau est vide
     hideClearButton(){
-        console.log("On cache le bouton clear");
         if(this.clearButton.classList.contains("show")){
             this.clearButton.classList.remove("show");
         }
     }
 
+    // Supprime le panier et vide le tableau
     removeBasket(){
         localStorage.removeItem("basket");
         this.tableBody.innerHTML = ""; // On vide le tableau
@@ -88,6 +94,7 @@ class Table{
         this.hideClearButton();
     }
 
+    // Met à jour les totaux HT, TTC et TVA
     updateTotal(){
         let datas = JSON.parse(localStorage.getItem("basket")) || [];
 
@@ -106,10 +113,14 @@ class Table{
         this.totalTVA.innerHTML = this.formate_money(totalTVA);
     }
 
+    // Calcul le prix TTC d'un produit
+    // @param {Object} data - L'objet contenant les données du produit
     calcul_ttc(data){
         return data.puht * data.quantity * (1 + data.tva / 100);
     }
 
+    // Formate un nombre en euros avec deux décimales
+    // @param {number} value - Le nombre à formater
     formate_money(value) {
         let number = parseFloat(value.toString().replace(',', '.'));
         if (isNaN(number)) return "0,00 €";
