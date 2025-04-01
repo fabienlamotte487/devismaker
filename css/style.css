@@ -134,6 +134,7 @@ div:has( > input[type="file"]) label{
     position: absolute;
     font-size: var(--p);
     top: 2.2rem;
+    left: 1rem;
     color: var(--dark);
     cursor: pointer;
 }
@@ -461,5 +462,8 @@ button.quantity-button.minus{
     .close-modal{
         top: 0;
         right: 0;
+    }
+    div:has( > input[type="file"]) label{
+        top: 3rem !important;
     }
 }
