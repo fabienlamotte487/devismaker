@@ -29,6 +29,7 @@ class Table{
             this.closeModal();
         });
 
+        // Préparation des évènnements pour les boutons générés dynamiquement
         window.addEventListener("click", (e) => {
             // Click sur le bouton de suppression d'une ligne
             if(e.target.closest("button") && e.target.closest("button").classList.contains("delete-button")) {
@@ -46,12 +47,19 @@ class Table{
 
             // Click sur le bouton de fermeture de la modale
             if(e.target.closest("button") 
-                && (
-                    e.target.closest("button").classList.contains("close-modal")  
-                    || e.target.closest("button").id == "modif_product_cancel"
-                ) 
-                || e.target.classList.contains("background")){
+            && (e.target.closest("button").classList.contains("close-modal") 
+            || e.target.closest("button").id == "modif_product_cancel") 
+            || e.target.classList.contains("background")){
                 this.closeModal();
+            }
+
+            if(e.target.classList.contains("quantity-button")){
+                let idToModif = e.target.getAttribute("data_id");
+                let product = getItemFromBasket("basket", { id: idToModif });
+                let newQuantity = e.target.classList.contains("plus") ? parseInt(product.quantity) + 1 : parseInt(product.quantity) - 1;
+                product.quantity = newQuantity;
+                updateItemFromBasket("basket", product);
+                this.fill();
             }
         });
 
@@ -72,9 +80,16 @@ class Table{
     // @param {Object} data - L'objet contenant les données du produit
     addLine(data){
         let tr = document.createElement("tr");
+        tr.id = `basket_${data.id}`;
         tr.innerHTML = `
             <td>${data.name}</td>
-            <td>${data.quantity}</td>
+            <td class="quanity-container">
+                <span class="quantity">${data.quantity}</span>
+                <div class="quantity-buttons-container">
+                    <button type="button" class="quantity-button minus" data_id="${data.id}">-</button>
+                    <button type="button" class="quantity-button plus" data_id="${data.id}">+</button>
+                </div>
+            </td>
             <td>${this.formate_money(data.puht)}</td>
             <td>${data.tva} %</td>
             <td>${this.formate_money(this.calcul_ttc(data))}</td>

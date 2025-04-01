@@ -266,8 +266,8 @@ button{
 }
 
 #delete_basket{
-    background: var(--error);
-    color: white;
+    background: var(--secondary);
+    color: black;
     opacity: 0;
     transition: opacity .3s ease;
     cursor:none;
@@ -378,6 +378,51 @@ button{
     justify-content: flex-end;
     gap: 1rem;
     margin-top:3rem;
+}
+
+.quanity-container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+}
+
+.quantity-buttons-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: .2rem;
+    padding: .2rem;
+    background: var(--primary);
+    border-radius: 30px;
+}
+
+.quantity-buttons-container button{
+    all:initial;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    color: black;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity .3s ease;
+}
+
+.quantity-buttons-container button:hover{
+    opacity:.9;
+}
+button.quantity-button.plus{
+    padding-top: 2px;
+    padding-left: .5px;
+}
+
+button.quantity-button.minus{
+    padding-bottom: 2px;
+    padding-left: .5px;
 }
 
 @media screen and (max-width: 992px) {

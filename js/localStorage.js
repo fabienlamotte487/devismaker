@@ -61,3 +61,30 @@ function updateItemFromBasket(key, newObject) {
     // Sauvegarder le tableau mis à jour dans localStorage
     localStorage.setItem(key, JSON.stringify(newArray));
 }
+
+function updateItemQuantity(key, newObject, state){
+    // Récupérer le tableau existant depuis localStorage
+    let existingArray = JSON.parse(localStorage.getItem(key, newObject)) || [];
+
+    if(state == "minus" && newObject.quantity <= 1) {
+        removeProductToBasket(key, newObject);
+        return;
+    }
+
+    // Ajouter le nouvel objet au tableau
+    let newArray = existingArray.map((obj) => {
+        if(obj.id === newObject.id) {
+            if(state == "plus"){
+                newObject.quantity = parseInt(obj.quantity) + 1;
+            } else {
+                newObject.quantity = parseInt(obj.quantity) - 1;
+            }
+            return newObject;
+        } else {
+            return obj;
+        }
+    });
+
+    // Sauvegarder le tableau mis à jour dans localStorage
+    localStorage.setItem(key, newObject, JSON.stringify(newArray));
+}
