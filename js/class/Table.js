@@ -16,11 +16,12 @@ class Table{
         window.addEventListener('newProductToBasket', (e) => {
             const { key, newObject } = e.detail;
             this.addLine(newObject);
+            this.updateTotal();
         });
 
         this.clearButton.addEventListener("click", () => {
-            this.removeBasket();
             this.clearBasketCache();
+            this.removeBasket();
         });
 
         this.modalProductValidate.addEventListener("click", () => {
@@ -73,7 +74,6 @@ class Table{
         datas.forEach(data => {
             this.addLine(data);
         });
-        this.updateTotal();
     }
 
     // Ajoute une ligne au tableau
@@ -103,7 +103,6 @@ class Table{
             </td>
         `;
         this.tableBody.appendChild(tr);
-        this.updateTotal();
         this.revealClearButton();
     }
 
