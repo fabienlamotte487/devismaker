@@ -81,13 +81,6 @@ nav{
     }
 }
 
-@media screen and (max-width: 992px) {
-    .columned{
-        flex-direction: column;
-        gap:0;
-    }
-}
-
 @media screen and (max-width: 768px) {
     * {
         font-size: var(--presponsive);
@@ -114,7 +107,7 @@ nav{
         top: 0;
         right: 0;
     }
-    .white-block{
+    section .white-block:last-child, section.white-block{
         margin: 3rem 0 15rem 0;
     }
 }

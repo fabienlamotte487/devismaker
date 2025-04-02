@@ -1,9 +1,11 @@
+div:has(> table){
+    overflow-x: auto;
+}
 table{
-    width: 100%;
     border-collapse: collapse;
     color: var(--dark);
-    overflow-x: scroll;
-    min-width: auto;
+    width: 100%;
+    min-width: 100%;
 }
 
 table thead tr{
@@ -14,17 +16,26 @@ table thead tr th:not(:first-child):not(:last-child),
 table tbody tr td:not(:first-child):not(:last-child),
 table tfoot tr td:not(:first-child):not(:last-child){
     border-right: 1px solid black;
-    padding: 1rem;
+    padding: 1.1rem;
 }
 
 table thead tr,
-table tbody tr,
-table tfoot tr td{
+table tbody tr{
     text-align: right;
 }
 
-table tbody tr td{
+table tfoot tr td{
+    text-align: center;
+}
+
+table tbody tr td, 
+table tfoot tr td, 
+table thead tr th{
     white-space: nowrap;
+}
+
+table tfoot tr td{
+    padding-left:.5rem;
 }
 
 table thead tr th:first-child,

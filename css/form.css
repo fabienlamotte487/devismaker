@@ -99,6 +99,26 @@ div input[type="file"]::file-selector-button{
     height: 200px;
 }
 
+/* Form product */
+#products_datas .columned{
+    flex-wrap: nowrap;
+}
+
+#products_datas input{
+    min-width: auto;
+}
+
+#products_datas .columned > div:first-child{
+    flex: 3;
+}
+
+@media screen and (max-width: 992px) {
+    .columned{
+        flex-direction: column;
+        gap:0;
+    }
+}
+
 @media screen and (max-width: 768px) {
     div:has( > input[type="file"]) label{
         top: 3rem !important;
