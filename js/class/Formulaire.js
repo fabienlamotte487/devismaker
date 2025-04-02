@@ -70,16 +70,19 @@ class Formulaire {
         [
             ...this.inputsMyDatas, 
             ...this.inputsCustomerDatas, 
-            ...this.inputsProductDatas
+            ...this.inputsProductDatas,
+            ...this.inputsLegalsDatas
         ].forEach(input => {
             input.addEventListener("keyup", () => {
                 this.validationLoop(input);
             });
+            this.prefillInputs(input);
         });
 
         this.basket_fill_button.addEventListener("click", () => {
             this.updateBasket();
         });
+
     }
 
     // Validation pour le premier écran (Mes données)
@@ -254,6 +257,13 @@ class Formulaire {
 
         if(error){
             parent.removeChild(error);
+        }
+    }
+
+    // Préremplie les données dans les inputs si des données sont stockées depuis la sessionStorage
+    prefillInputs(input){
+        if(input && sessionStorage[input.id] != null && input.type != "file"){
+            input.value = sessionStorage[input.id]
         }
     }
 }
