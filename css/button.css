@@ -4,6 +4,7 @@
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
+    margin-bottom: 3rem;
 }
 
 #basket_fill{
@@ -96,4 +97,14 @@ button.quantity-button.plus{
 button.quantity-button.minus{
     padding-bottom: 2px;
     padding-left: .5px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .buttons-line{
+        position: fixed;
+        bottom: 2rem;
+        z-index: 2;
+        margin-bottom: 0;
+    }
 }

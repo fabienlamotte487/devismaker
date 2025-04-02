@@ -115,4 +115,7 @@ nav{
         top: 0;
         right: 0;
     }
+    .white-block{
+        margin: 3rem 0 15rem 0;
+    }
 }
