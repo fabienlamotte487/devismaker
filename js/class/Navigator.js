@@ -27,6 +27,7 @@ class Navigator{
             this.page++;
             this.updateButtons();
             this.updatePageVisibility();
+            this.setNewFocus();
         }
     }
 
@@ -36,6 +37,7 @@ class Navigator{
             this.page--;
             this.updateButtons();
             this.updatePageVisibility();
+            this.setNewFocus();
         }
     }
     
@@ -67,5 +69,9 @@ class Navigator{
 
     getPageIndex(){
         return this.page-1;
+    }
+
+    setNewFocus(){
+        this.pagesElements[this.getPageIndex()].querySelector("input").focus();
     }
 }
