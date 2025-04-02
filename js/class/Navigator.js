@@ -1,6 +1,6 @@
 class Navigator{
     constructor(){
-        this.page = 1;
+        this.page = 3;
         this.min = 1;
         this.max = document.querySelectorAll("section").length;
         this.prevButton = document.getElementById("previous-button"); // Boutton de retour en arrière
@@ -58,13 +58,15 @@ class Navigator{
 
     // Affiche la bonne section selon la page modifiée
     updatePageVisibility(){
-        let currentPage = document.querySelector("section.current-page");
-
-        if(currentPage){
-            currentPage.classList.remove("current-page");
-        }
-
-        this.pagesElements[this.getPageIndex()].classList.add("current-page");
+        this.pagesElements.forEach((section, index) => {
+            if(index === this.getPageIndex()){
+                section.classList.add("current-page");
+                section.setAttribute("aria-hidden", "false");
+            } else {
+                section.classList.remove("current-page");
+                section.setAttribute("aria-hidden", "true");
+            }
+        });
     }
 
     getPageIndex(){
@@ -72,6 +74,9 @@ class Navigator{
     }
 
     setNewFocus(){
-        this.pagesElements[this.getPageIndex()].querySelector("input").focus();
+        let input = this.pagesElements[this.getPageIndex()].querySelector("input");
+        if(input){
+            input.focus();
+        }
     }
 }
