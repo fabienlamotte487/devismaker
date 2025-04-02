@@ -6,23 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>devis-maker</title>
     <style>
-        :root {
-            --primary: #F17960;
-            --secondary: #D9D9D9;
-            --dark: #000000;
-            --white: white;
-            --grey: #F1F1F1;
-            --error: #ea251e;
-            --info: #0b3071;
-            --h1: 48px;
-            --h2: 32px;
-            --p: 16px;
-            --errorMessage: 14px;
-            --h1responsive: 32px;
-            --h2responsive: 16px;
-            --presponsive: 11px;
-            --inputHeight: 56px;
-        }
     </style>
     <link rel="stylesheet" href="css/typo.css" />
     <link rel="stylesheet" href="css/style.css" />
@@ -44,25 +27,25 @@
                     <div>
                         <div>
                             <label for="my_company_name">Nom de l’entreprise*</label>
-                            <input type="text" id="my_company_name" name="my_company_name" required placeholder="" />
+                            <input type="text" id="my_company_name" name="my_company_name" required aria-required="true" placeholder="" />
                         </div>
                         <div>
                             <label for="my_adress">Adresse*</label>
-                            <input type="text" id="my_adress" name="my_adress" required placeholder="" />
+                            <input type="text" id="my_adress" name="my_adress" required aria-required="true" placeholder="" />
                         </div>
                         <div class="columned">
                             <div>
                                 <label for="my_postalcode">Code postal*</label>
-                                <input type="text" id="my_postalcode" name="my_postalcode" data-verif="postalcode" required placeholder="" />
+                                <input type="text" id="my_postalcode" name="my_postalcode" data-verif="postalcode" required aria-required="true" placeholder="" />
                             </div>
                             <div>
                                 <label for="my_city">Ville*</label>
-                                <input type="text" id="my_city" name="my_city" required placeholder="" />
+                                <input type="text" id="my_city" name="my_city" required aria-required="true" placeholder="" />
                             </div>
                         </div>
                         <div>
                             <label for="my_phonenumber">Numéro de téléphone*</label>
-                            <input type="text" id="my_phonenumber" name="my_phonenumber" data-verif="phonenumber" required placeholder="" />
+                            <input type="text" id="my_phonenumber" name="my_phonenumber" data-verif="phonenumber" required aria-required="true" placeholder="" />
                         </div>
                     </div>
                     <div>
@@ -82,26 +65,26 @@
                 <div class="columned">
                     <div>
                         <div>
-                            <label for="customer_company_name">Nom de l’entreprise*</label>
-                            <input type="text" id="customer_company_name" name="customer_company_name" required placeholder="" />
+                            <label for="customer_company_name">Nom de l’entreprise<span aria-hidden="true">*</span></label>
+                            <input type="text" id="customer_company_name" name="customer_company_name" required aria-required="true" placeholder="" />
                         </div>
                         <div>
-                            <label for="customer_adress">Adresse*</label>
-                            <input type="text" id="customer_adress" name="customer_adress" required placeholder="" />
+                            <label for="customer_adress">Adresse<span aria-hidden="true">*</span></label>
+                            <input type="text" id="customer_adress" name="customer_adress" required aria-required="true" placeholder="" />
                         </div>
                         <div class="columned">
                             <div>
-                                <label for="customer_postalcode">Code postal*</label>
-                                <input type="text" id="customer_postalcode" name="customer_postalcode" data-verif="postalcode" required placeholder="" />
+                                <label for="customer_postalcode">Code postal<span aria-hidden="true">*</span></label>
+                                <input type="text" id="customer_postalcode" name="customer_postalcode" data-verif="postalcode" required aria-required="true" placeholder="" />
                             </div>
                             <div>
-                                <label for="customer_city">Ville*</label>
-                                <input type="text" id="customer_city" name="customer_city" required placeholder="" />
+                                <label for="customer_city">Ville<span aria-hidden="true">*</span></label>
+                                <input type="text" id="customer_city" name="customer_city" required aria-required="true" placeholder="" />
                             </div>
                         </div>
                         <div>
-                            <label for="customer_phonenumber">Numéro de téléphone*</label>
-                            <input type="text" id="customer_phonenumber" name="customer_phonenumber" data-verif="phonenumber" required placeholder="" />
+                            <label for="customer_phonenumber">Numéro de téléphone<span aria-hidden="true">*</span></label>
+                            <input type="text" id="customer_phonenumber" name="customer_phonenumber" data-verif="phonenumber" required aria-required="true" placeholder="" />
                         </div>
                     </div>
                     <div>
@@ -121,24 +104,24 @@
                 <form id="products_datas">
                     <div class="columned">
                         <div>
-                            <label for="product_name">Nom du produit*</label>
-                            <input type="text" id="product_name" name="product_name" required placeholder="" />
+                            <label for="product_name">Nom du produit<span aria-hidden="true">*</span></label>
+                            <input type="text" id="product_name" name="product_name" required aria-required="true" placeholder="" />
                         </div>
                         <div>
-                            <label for="product_quantity">Qté*</label>
-                            <input type="number" id="product_quantity" name="product_quantity" required placeholder="" />
+                            <label for="product_quantity">Qté<span aria-hidden="true">*</span></label>
+                            <input type="number" id="product_quantity" name="product_quantity" required aria-required="true" placeholder="" />
                         </div>
                         <div>
-                            <label for="product_puht">PUHT*</label>
-                            <input type="text" id="product_puht" name="product_puht" class="money" required placeholder="" />
+                            <label for="product_puht">PUHT<span aria-hidden="true">*</span></label>
+                            <input type="text" id="product_puht" name="product_puht" class="money" required aria-required="true" placeholder="" />
                         </div>
                         <div>
-                            <label for="product_tva">TVA&nbsp;%*</label>
-                            <input type="number" id="product_tva" name="product_tva" required placeholder="" min="0" max="100" />
+                            <label for="product_tva">TVA&nbsp;%<span aria-hidden="true">*</span></label>
+                            <input type="number" id="product_tva" name="product_tva" required aria-required="true" placeholder="" min="0" max="100" />
                         </div>
                         <button type="button" class="button-primary" id="basket_fill">Ajouter</button>
                     </div>
-                    <small class="small-infos">Champs obligatoire*</small>
+                    <small class="small-infos">Champs obligatoire<span aria-hidden="true">*</span></small>
                 </form>
             </div>
             <div class="white-block">
@@ -183,17 +166,17 @@
             <h2>Finalisez votre devis avec les dernières informations importantes</h2>
             <form id="legals_datas">
                 <div>
-                    <label for="maximum_days">Nombre de jours de validité du devis*</label>
-                    <input type="number" id="maximum_days" name="maximum_days" class="money" required placeholder="" min="0" />
+                    <label for="maximum_days">Nombre de jours de validité du devis<span aria-hidden="true">*</span></label>
+                    <input type="number" id="maximum_days" name="maximum_days" class="money" required aria-required="true" placeholder="" min="0" />
                 </div>
                 <div>
-                    <label for="legals">Mes mentions légales*</label>
-                    <textarea id="legals" name="legals" placeholder="J'écris ici mes mentions légales" rows="15" cols="15" required></textarea>
+                    <label for="legals">Mes mentions légales<span aria-hidden="true">*</span></label>
+                    <textarea id="legals" name="legals" placeholder="J'écris ici mes mentions légales" rows="15" cols="15" required aria-required="true"></textarea>
                 </div>
             </form>
-            <small class="small-infos">Champs obligatoire*</small>
+            <small class="small-infos">Champs obligatoire<span aria-hidden="true">*</span></small>
         </section>
-        <div class="modal" id="modif_modal">
+        <div class="modal" id="modif_modal" role="dialog">
             <div class="background"></div>
             <div class="modal-content white-block">
                 <h2>Modifier le produit</h2>
@@ -202,24 +185,24 @@
                 <form id="modif_product_datas">
                     <div class="columned">
                         <div>
-                            <label for="modif_product_name">Nom du produit*</label>
-                            <input type="text" id="modif_product_name" name="modif_product_name" required placeholder="" />
+                            <label for="modif_product_name">Nom du produit<span aria-hidden="true">*</span></label>
+                            <input type="text" id="modif_product_name" name="modif_product_name" required aria-required="true" placeholder="" />
                         </div>
                         <div>
-                            <label for="modif_product_quantity">Quantité*</label>
-                            <input type="number" id="modif_product_quantity" name="modif_product_quantity" required placeholder="" />
+                            <label for="modif_product_quantity">Quantité<span aria-hidden="true">*</span></label>
+                            <input type="number" id="modif_product_quantity" name="modif_product_quantity" required aria-required="true" placeholder="" />
                         </div>
                         <div>
-                            <label for="modif_product_puht">Prix unitaire HT*</label>
-                            <input type="text" id="modif_product_puht" name="modif_product_puht" class="money" required placeholder="" />
+                            <label for="modif_product_puht">Prix unitaire HT<span aria-hidden="true">*</span></label>
+                            <input type="text" id="modif_product_puht" name="modif_product_puht" class="money" required aria-required="true" placeholder="" />
                         </div>
                         <div>
-                            <label for="modif_product_tva">TVA %*</label>
-                            <input type="number" id="modif_product_tva" name="modif_product_tva" required placeholder="" min="0" max="100" />
+                            <label for="modif_product_tva">TVA %<span aria-hidden="true">*</span></label>
+                            <input type="number" id="modif_product_tva" name="modif_product_tva" required aria-required="true" placeholder="" min="0" max="100" />
                         </div>
                     </div>
                     <div class="modal-buttons">
-                        <button type="button" id="modif_product_cancel" class="button-secondary">Annuler</button>
+                        <button type="button" id="modif_product_cancel" class="button-secondary" aria-label="Fermer la fenêtre">Annuler</button>
                         <button type="button" id="modif_product_validate" class="button-primary">Valider</button>
                     </div>
                 </form>
