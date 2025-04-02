@@ -99,7 +99,6 @@ nav{
     h1{
         font-size: var(--h1responsive);
         margin-top: 3rem;
-        margin-left: 3rem;
     }
     h2{
         font-size: var(--h2responsive);
