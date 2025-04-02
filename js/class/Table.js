@@ -70,7 +70,7 @@ class Table{
     // Remplit le tableau avec les données du panier
     fill(){
         this.removeBasket();
-        let datas = JSON.parse(localStorage.getItem("basket")) || [];
+        let datas = JSON.parse(sessionStorage.getItem("basket")) || [];
         datas.forEach(data => {
             this.addLine(data);
         });
@@ -111,7 +111,7 @@ class Table{
     removeLine(target){
         target.closest("tr").remove();
         this.updateTotal();
-        let datas = JSON.parse(localStorage.getItem("basket")) || [];
+        let datas = JSON.parse(sessionStorage.getItem("basket")) || [];
         if(datas.length === 0){
             this.hideClearButton();
         }
@@ -139,12 +139,12 @@ class Table{
     }
 
     clearBasketCache(){
-        localStorage.removeItem("basket");
+        sessionStorage.removeItem("basket");
     }
 
     // Met à jour les totaux HT, TTC et TVA
     updateTotal(){
-        let datas = JSON.parse(localStorage.getItem("basket")) || [];
+        let datas = JSON.parse(sessionStorage.getItem("basket")) || [];
 
         let totalHT = 0;
         let totalTTC = 0;
