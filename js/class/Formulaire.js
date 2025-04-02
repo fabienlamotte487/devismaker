@@ -94,11 +94,11 @@ class Formulaire {
 
         if(errors === 0){
             sessionStorage.setItem("my_company_name", this.inputsMyDatas[0].value);
-            sessionStorage.setItem("my_adress", this.inputsMyDatas[0].value);
-            sessionStorage.setItem("my_postalcode", this.inputsMyDatas[0].value);
-            sessionStorage.setItem("my_city", this.inputsMyDatas[0].value);
-            sessionStorage.setItem("my_phonenumber", this.inputsMyDatas[0].value);
-            sessionStorage.setItem("my_logo", this.inputsMyDatas[0].value);
+            sessionStorage.setItem("my_adress", this.inputsMyDatas[1].value);
+            sessionStorage.setItem("my_postalcode", this.inputsMyDatas[2].value);
+            sessionStorage.setItem("my_city", this.inputsMyDatas[3].value);
+            sessionStorage.setItem("my_phonenumber", this.inputsMyDatas[4].value);
+            sessionStorage.setItem("my_logo", this.inputsMyDatas[5].value);
 
             return true;
         } else {
@@ -119,11 +119,11 @@ class Formulaire {
 
         if(errors === 0){
             sessionStorage.setItem("customer_company_name", this.inputsCustomerDatas[0].value);
-            sessionStorage.setItem("customer_adress", this.inputsCustomerDatas[0].value);
-            sessionStorage.setItem("customer_postalcode", this.inputsCustomerDatas[0].value);
-            sessionStorage.setItem("customer_city", this.inputsCustomerDatas[0].value);
-            sessionStorage.setItem("customer_phonenumber", this.inputsCustomerDatas[0].value);
-            sessionStorage.setItem("customer_logo", this.inputsCustomerDatas[0].value);
+            sessionStorage.setItem("customer_adress", this.inputsCustomerDatas[1].value);
+            sessionStorage.setItem("customer_postalcode", this.inputsCustomerDatas[2].value);
+            sessionStorage.setItem("customer_city", this.inputsCustomerDatas[3].value);
+            sessionStorage.setItem("customer_phonenumber", this.inputsCustomerDatas[4].value);
+            sessionStorage.setItem("customer_logo", this.inputsCustomerDatas[5].value);
 
             return true;
         } else {
