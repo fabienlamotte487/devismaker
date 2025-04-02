@@ -1,6 +1,6 @@
 class Navigator{
     constructor(){
-        this.page = 3;
+        this.page = 4;
         this.min = 1;
         this.max = document.querySelectorAll("section").length;
         this.prevButton = document.getElementById("previous-button"); // Boutton de retour en arrière
@@ -47,7 +47,7 @@ class Navigator{
             this.prevButton.setAttribute("disabled", true);
         }
 
-        if(this.page < this.max){
+        if(this.page <= this.max){
             this.nextButton.removeAttribute("disabled");
         } else {
             this.nextButton.setAttribute("disabled", true);

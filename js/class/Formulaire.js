@@ -33,6 +33,9 @@ class Formulaire {
         this.product_puht = document.getElementById("product_puht");
         this.product_tva = document.getElementById("product_tva");
 
+        this.maximum_days = document.getElementById("maximum_days");
+        this.legals = document.getElementById("legals");
+
         this.inputsMyDatas = [
             this.my_company_name, 
             this.my_adress, 
@@ -54,6 +57,10 @@ class Formulaire {
             this.product_quantity, 
             this.product_puht, 
             this.product_tva, 
+        ];
+        this.inputsLegalsDatas = [
+            this.maximum_days,
+            this.legals
         ];
         
         this.init();
@@ -167,8 +174,25 @@ class Formulaire {
     }
     
     // Validation pour le quatrième écran (Données légaux)
-    legalDatasValidator(){
-        return true;
+    legalDatasValidator = () => {
+        let errors = 0;
+        
+        this.inputsLegalsDatas.forEach(input => {
+            if(!this.validationLoop(input)){
+                errors++;
+            }
+        });
+
+        if(errors === 0){
+            localStorage.setItem("maximum_days", this.inputsLegalsDatas[0].value);
+            localStorage.setItem("legals", this.inputsLegalsDatas[1].value);
+
+            printPdf();
+
+            return true;
+        } else {
+            return false
+        }
     }
 
     // Fonction passerelle qui va vérifier toutes les données d'un écran
