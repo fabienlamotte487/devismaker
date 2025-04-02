@@ -106,7 +106,7 @@ nav{
     }
     header{
         background-image: url("./../png/headerbackmobile.png");
-        height: 200px;
+        height: 170px;
     }
     button{
         padding: 1rem 3rem;
@@ -114,8 +114,5 @@ nav{
     .close-modal{
         top: 0;
         right: 0;
-    }
-    div:has( > input[type="file"]) label{
-        top: 3rem !important;
     }
 }
