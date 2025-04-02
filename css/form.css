@@ -3,7 +3,10 @@ input {
     min-width: 150px;
 }
 
-input[type="text"], input[type="number"], textarea{
+input[type="text"], 
+input[type="number"], 
+input[type="tel"], 
+textarea{
     background: var(--grey);
     border: none;
     outline: 1px solid #B1B1B1;
@@ -16,16 +19,25 @@ input[type="text"], input[type="number"], textarea{
     box-sizing: border-box;
 }
 
-input[type="text"]:focus-visible, input[type="number"]:focus-visible, input[type="file"]:focus-visible, textarea:focus-visible{
+input[type="text"]:focus-visible, 
+input[type="number"]:focus-visible, 
+input[type="file"]:focus-visible, 
+input[type="tel"]:focus-visible, 
+textarea:focus-visible{
     outline: 1px solid var(--info);
 }
 
-div:has( > input[type="text"]), div:has( > input[type="number"]), div:has( > textarea){
+div:has( > input[type="text"]), 
+div:has( > input[type="number"]), 
+div:has( > input[type="tel"]), 
+div:has( > textarea){
     padding: 1rem 0;
     position: relative;
 }
 
-label:has( ~ input[type="text"]), label:has( ~ input[type="number"]){
+label:has( ~ input[type="text"]), 
+label:has( ~ input[type="number"]),
+label:has( ~ input[type="tel"]){
     position: absolute;
     z-index: 1;
     top: 2.2rem;
@@ -36,7 +48,8 @@ label:has( ~ input[type="text"]), label:has( ~ input[type="number"]){
 }
 
 label:has( ~ input[type="text"]:focus-visible), label:has( ~ input[type="text"]:not(:placeholder-shown)),
-label:has( ~ input[type="number"]:focus-visible), label:has( ~ input[type="number"]:not(:placeholder-shown)){
+label:has( ~ input[type="number"]:focus-visible), label:has( ~ input[type="number"]:not(:placeholder-shown)),
+label:has( ~ input[type="tel"]:focus-visible), label:has( ~ input[type="tel"]:not(:placeholder-shown)){
     top: 1.35rem;
     left: 1rem;
     opacity: .6;
