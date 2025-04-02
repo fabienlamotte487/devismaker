@@ -89,6 +89,7 @@ button{
 .quantity-buttons-container button:hover{
     opacity:.9;
 }
+
 button.quantity-button.plus{
     padding-top: 2px;
     padding-left: .5px;
@@ -99,6 +100,16 @@ button.quantity-button.minus{
     padding-left: .5px;
 }
 
+button.quantity-button:focus-visible,
+.delete-button:focus-visible, 
+.edit-button:focus-visible
+{
+    border: 1px solid black;
+}
+.delete-button:focus-visible, 
+.edit-button:focus-visible{
+    border-radius: 0;
+}
 
 @media screen and (max-width: 768px) {
     .buttons-line{
