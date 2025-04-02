@@ -1,0 +1,10 @@
+.trash-icon, .edit-icon{
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+    transition: opacity .3s ease;
+}
+
+.trash-icon:hover, .edit-icon:hover{
+    opacity: .7;
+}

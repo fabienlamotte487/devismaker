@@ -1,0 +1,99 @@
+
+input {
+    min-width: 150px;
+}
+
+input[type="text"], input[type="number"], textarea{
+    background: var(--grey);
+    border: none;
+    outline: 1px solid #B1B1B1;
+    height: var(--inputHeight);
+    width: 100%;
+    border-radius: 15px;
+    transition: outline 0.3s ease;
+    padding-top: 0.3rem;
+    padding-left: 1rem;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus-visible, input[type="number"]:focus-visible, input[type="file"]:focus-visible, textarea:focus-visible{
+    outline: 1px solid var(--info);
+}
+
+div:has( > input[type="text"]), div:has( > input[type="number"]), div:has( > textarea){
+    padding: 1rem 0;
+    position: relative;
+}
+
+label:has( ~ input[type="text"]), label:has( ~ input[type="number"]){
+    position: absolute;
+    z-index: 1;
+    top: 2.2rem;
+    left: 1rem;
+    cursor:auto;
+    opacity: 1;
+    transition: top 0.3s ease, left 0.3s ease, opacity 0.3s ease, font-size 0.3s ease;
+}
+
+label:has( ~ input[type="text"]:focus-visible), label:has( ~ input[type="text"]:not(:placeholder-shown)),
+label:has( ~ input[type="number"]:focus-visible), label:has( ~ input[type="number"]:not(:placeholder-shown)){
+    top: 1.35rem;
+    left: 1rem;
+    opacity: .6;
+    font-size: 12px;
+}
+
+/* TEXTAREA */
+textarea{
+    margin-top: .5rem;
+    padding-top: 1rem;
+    height: 200px;
+}
+
+/* INPUT FILE */
+div:has( > input[type="file"]){
+    position: relative;
+    padding: 1rem 0;
+    transition: opacity .3s ease;
+}
+
+div:has( > input[type="file"]) label{
+    position: absolute;
+    font-size: var(--p);
+    top: 2.2rem;
+    left: 1rem;
+    color: var(--dark);
+    cursor: pointer;
+}
+
+div input[type="file"]{
+    background: var(--grey);
+    height: var(--inputHeight);
+    width: 100%;
+    border-radius: 15px;
+    outline: 1px solid #B1B1B1;
+    line-height: var(--inputHeight);
+    padding-left: 5rem;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+div input[type="file"]::file-selector-button{
+    border: none;
+    outline: none;
+    transition: opacity .3s ease;
+    cursor: pointer;
+}
+
+.logo-prev{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-top: 2rem;
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+
+.logo-prev.show{
+    opacity: 1;
+}

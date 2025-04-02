@@ -1,0 +1,39 @@
+table{
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--dark);
+    overflow-x: scroll;
+    min-width: auto;
+}
+
+table thead tr{
+    border-bottom: 1px solid black;
+}
+
+table thead tr th:not(:first-child):not(:last-child),
+table tbody tr td:not(:first-child):not(:last-child),
+table tfoot tr td:not(:first-child):not(:last-child){
+    border-right: 1px solid black;
+    padding: 1rem;
+}
+
+table thead tr,
+table tbody tr,
+table tfoot tr td{
+    text-align: right;
+}
+
+table tbody tr td{
+    white-space: nowrap;
+}
+
+table thead tr th:first-child,
+table tbody tr td:first-child{
+    text-align: left;
+}
+
+table thead tr th:last-child,
+table tbody tr td:last-child
+{
+    text-align: center;
+}

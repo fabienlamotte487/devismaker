@@ -24,7 +24,13 @@
             --inputHeight: 56px;
         }
     </style>
+    <link rel="stylesheet" href="css/typo.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/form.css" />
+    <link rel="stylesheet" href="css/table.css" />
+    <link rel="stylesheet" href="css/modal.css" />
+    <link rel="stylesheet" href="css/icon.css" />
+    <link rel="stylesheet" href="css/button.css" />
 </head>
 <body>
     <header>
@@ -132,6 +138,7 @@
                         </div>
                         <button type="button" class="button-primary" id="basket_fill">Ajouter</button>
                     </div>
+                    <small class="small-infos">Champs obligatoire*</small>
                 </form>
             </div>
             <div class="white-block">
@@ -173,9 +180,18 @@
             </div>
         </section>
         <section class="white-block">
+            <h2>Finalisez votre devis avec les dernières informations importantes</h2>
             <form id="legals_datas">
-                
+                <div>
+                    <label for="maximum_days">Nombre de jours de validité du devis*</label>
+                    <input type="number" id="maximum_days" name="maximum_days" class="money" required placeholder="" min="0" value="30" />
+                </div>
+                <div>
+                    <label for="legals">Mes mentions légales*</label>
+                    <textarea id="legals" placeholder="J'écris ici mes mentions légales" rows="15" cols="15"></textarea>
+                </div>
             </form>
+            <small class="small-infos">Champs obligatoire*</small>
         </section>
         <div class="modal" id="modif_modal">
             <div class="background"></div>
