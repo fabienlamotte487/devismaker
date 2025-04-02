@@ -9,7 +9,7 @@ class Formulaire {
         this.basket_fill_button = document.getElementById("basket_fill");
         this.regexPhone = /^(0[1-9])(\d{8})$/;
         this.regexPostalCode = /^[0-9]{5}$/;
-        this.regexPhoneError = "Le numéro de téléphone ne doit contenir qu'une série de 10 chiffres.";
+        this.regexPhoneError = "Le numéro de téléphone saisi n'est pas valide.";
         this.regexPostalCodeError = "Le code postal ne doit contenir qu'une série de 5 chiffres.";
         this.invalidEmptyMessage = "Ce champ ne peut pas être vide";
         this.errorClassname = "error-message";
