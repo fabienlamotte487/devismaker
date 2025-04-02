@@ -262,8 +262,8 @@ class Formulaire {
 
     // Préremplie les données dans les inputs si des données sont stockées depuis la sessionStorage
     prefillInputs(input){
-        if(input && sessionStorage[input.id] != null && input.type != "file"){
-            input.value = sessionStorage[input.id]
+        if (input && input.id && sessionStorage.getItem(input.id) && input.type !== "file") {
+            input.value = sessionStorage.getItem(input.id);
         }
     }
 }
