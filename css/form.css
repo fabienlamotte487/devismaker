@@ -87,7 +87,7 @@ div input[type="file"]::file-selector-button{
 
 .logo-prev{
     width: 200px;
-    height: 200px;
+    height: 0px;
     object-fit: cover;
     margin-top: 2rem;
     opacity: 0;
@@ -96,4 +96,5 @@ div input[type="file"]::file-selector-button{
 
 .logo-prev.show{
     opacity: 1;
+    height: 200px;
 }
