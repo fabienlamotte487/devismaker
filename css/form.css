@@ -98,3 +98,19 @@ div input[type="file"]::file-selector-button{
     opacity: 1;
     height: 200px;
 }
+
+@media screen and (max-width: 768px) {
+    div:has( > input[type="file"]) label{
+        top: 3rem !important;
+        font-size: var(--presponsive);
+    }
+    label:has( ~ input[type="text"]), 
+    label:has( ~ input[type="number"]),
+    label:has( ~ input[type="file"]){
+        font-size: var(--presponsive);
+        top: 3rem;
+    }
+    input{
+        font-size: var(--presponsive);
+    }
+}
