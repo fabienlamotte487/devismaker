@@ -13,19 +13,24 @@ table thead tr{
 }
 
 table thead tr th:not(:first-child):not(:last-child),
-table tbody tr td:not(:first-child):not(:last-child),
-table tfoot tr td:not(:first-child):not(:last-child){
+table tbody tr td:not(:first-child):not(:last-child)
+{
     border-right: 1px solid black;
     padding: 1.1rem;
+}
+
+table tfoot tr td:not(:first-child):not(:last-child){
+    border-right: 1px solid black;
+}
+table tfoot tr td{
+    padding: .3rem 1.1rem .3rem .3rem;
+    font-weight: bold;
+    text-align: right;
 }
 
 table thead tr,
 table tbody tr{
     text-align: right;
-}
-
-table tfoot tr td{
-    text-align: center;
 }
 
 table tbody tr td, 
@@ -34,9 +39,6 @@ table thead tr th{
     white-space: nowrap;
 }
 
-table tfoot tr td{
-    padding-left:.5rem;
-}
 
 table thead tr th:first-child,
 table tbody tr td:first-child{
