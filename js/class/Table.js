@@ -173,6 +173,10 @@ class Table{
 
         let title = this.modalProduct.querySelector(".modal-content h2");
         title.innerHTML = `Modifier le produit "${data.name}"`;
+
+        if(this.modalProduct.querySelector("#modif_product_name")){
+            this.modalProduct.querySelector("#modif_product_name").focus();
+        }
     }
 
     // Ferme la modale de modification d'un produit
