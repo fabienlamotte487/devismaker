@@ -15,6 +15,10 @@ async function printPdf() {
     const customerCity = sessionStorage.getItem("customer_city");
     const customerPhone = sessionStorage.getItem("customer_phonenumber");
 
+    const basket = JSON.parse(sessionStorage.getItem("basket"));
+    let totalTTC = 0;
+    let totalTVA = 0;
+    let totalHT = 0;
 
     const maxDays = sessionStorage.getItem("maximum_days");
     const legals = sessionStorage.getItem("legals");
@@ -101,6 +105,25 @@ async function printPdf() {
         y += (lineSize*numberLines);
     }
 
+    productFormated = () =>{
+        let products = [];
+
+        basket.forEach(product => {
+            products.push([
+                product.name,
+                product.quantity,
+                formate_money(product.puht),
+                product.tva + " %",
+                formate_money(calcul_ttc(product))
+            ])
+            totalHT += product.puht * product.quantity;
+            totalTTC += calcul_ttc(product);
+            totalTVA += (product.tva / 100) * product.puht * product.quantity;
+        })
+
+        return products;
+    }
+
     addBlock(meParams, 10, 10); // Informations de mon entreprise
     addBlock(customerParams, pageWidth - 10, 10, false); // Information entreprise cliente
     jumpBreak();
@@ -113,21 +136,41 @@ async function printPdf() {
     // Tableau des produits
     doc.autoTable({
         startY: y,
+        head: [
+            [
+                "Produit", 
+                { content: "Quantité", styles: { halign: "right" } }, 
+                { content: "Prix Unitaire HT", styles: { halign: "right" } }, 
+                { content: "TVA", styles: { halign: "right" } }, 
+                { content: "TTC", styles: { halign: "right" } }
+            ]
+        ],
+        body: productFormated(),
+        foot: [
+            ["", "", "", "Total HT", formate_money(totalHT)],  // Ligne Total HT
+            ["", "", "", "Total TVA", formate_money(totalTVA)],  // Ligne Total TVA
+            ["", "", "", "Total TTC", formate_money(totalTTC)]  // Ligne Total TTC
+        ],
         headStyles: {
             fillColor: "#F17960",
             textColor: [0, 0, 0],
-            fontStyle: "bold"
+            fontStyle: "bold",
         },
-        head: [["Produit", "Quantité", "Prix Unitaire HT", "TVA", "TTC"]],
-        body: [
-            ["Ordinateur Portable", 2, "800€", "20%", "960€"],
-            ["Clavier Mécanique", 1, "100€", "20%", "120€"],
-            ["Écran 27 pouces", 3, "300€", "20%", "360€"],
-            ["Souris Gaming", 2, "50€", "20%", "60€"],
-            ["Casque Audio", 1, "150€", "20%", "180€"]
-        ],
+        footStyles: {
+            fillColor: "white", // Fond gris pour le footer
+            textColor: [0, 0, 0], // Texte noir
+            fontStyle: "bold",
+            halign: "right" // Alignement à droite pour toutes les colonnes du footer
+        },
+        columnStyles: {
+            0: { halign: "left" },  // La colonne "Produit" reste alignée à gauche
+            1: { halign: "right" }, // Quantité alignée à droite
+            2: { halign: "right" }, // Prix Unitaire HT aligné à droite
+            3: { halign: "right" }, // TVA alignée à droite
+            4: { halign: "right" }  // TTC aligné à droite
+        }
     });
-    lineBreak(1 + 10);
+    lineBreak(1 + (basket.length * 2) + (3*2));
     jumpBreak();
 
     // Mentions légales
