@@ -76,7 +76,7 @@ nav{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 2rem;
+    column-gap: 2rem;
 }
 
 .columned > div{
