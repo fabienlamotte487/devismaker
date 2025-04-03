@@ -65,44 +65,37 @@ async function printPdf() {
     ]
 
     let y = 10; // Position de départ dans le PDF
-    let lineSize = 5; // Espacement entre les lignes
     let lineBreakSize = 10; // Taille du saut de ligne
-    let pageWidth = doc.internal.pageSize.getWidth(); // Largeur de la page
+    let pageWidth = doc.internal.pageSize.getWidth();
     doc.setFontSize(11); // Taille de la police globale
 
-    // Fonction d'ajout d'un block de contenu
-    function addBlock(array, xaxe, yaxe, addSpace = true){
-        array.forEach((elem, index) => {
-            doc.setFont("helvetica", "normal");
-
-            if(elem.fontWeight == "bold"){
-                doc.setFont("helvetica", "bold");
-            }
-
-            if(elem.align){
-                doc.text(elem.line, xaxe, yaxe + (lineSize*index), {align: elem.align})
-            } else {
-                doc.text(elem.line, xaxe, yaxe + (lineSize*index))
-            }
-
-            if(addSpace){
-                lineBreak()
-            }
+    function addBlock(array, xaxe) {
+        array.forEach((elem) => {
+            doc.setFont("helvetica", elem.fontWeight || "normal");
+            y = addTextWithAutoHeight(doc, elem.line, xaxe, y, { align: elem.align || "left" });
         });
-    }
-
-    // Fonction d'ajout d'une ligne simple
-    function addLine(text, xaxe, yaxe){
-        doc.text(text, xaxe, yaxe)
-        lineBreak()
     }
 
     function jumpBreak(){
         y += lineBreakSize;
     }
 
-    function lineBreak(numberLines = 1){
-        y += (lineSize*numberLines);
+    function addTextWithAutoHeight(doc, text, x, y, options = null) {
+        const textLines = doc.splitTextToSize(text, 180); // Divise le texte en plusieurs lignes
+        const lineHeight = doc.getTextDimensions("A").h + 2; // Hauteur d'une ligne avec un petit padding
+        
+        textLines.forEach((line) => {
+            const pageHeight = doc.internal.pageSize.height;
+            if (y + lineHeight > pageHeight - 10) {
+                doc.addPage();
+                y = 10; // Réinitialisation en haut de la nouvelle page
+            }
+
+            doc.text(line, x, y, options); // Ajoute la ligne de texte
+            y += lineHeight; // Met à jour la position Y
+        });
+    
+        return y; // Retourne la nouvelle position Y mise à jour
     }
 
     productFormated = () =>{
@@ -124,13 +117,28 @@ async function printPdf() {
         return products;
     }
 
-    addBlock(meParams, 10, 10); // Informations de mon entreprise
-    addBlock(customerParams, pageWidth - 10, 10, false); // Information entreprise cliente
+    function addFooter() {
+        const pageCount = doc.internal.getNumberOfPages(); // Nombre total de pages
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const pageHeight = doc.internal.pageSize.getHeight();
+        for (let i = 1; i <= pageCount; i++) {
+            doc.setPage(i); // Sélectionner la page à modifier
+            doc.setFontSize(10);
+            doc.setTextColor(150); // Couleur grise pour le footer
+            
+            // Numéro de page à droite
+            doc.text(`Page ${i} / ${pageCount}`, pageWidth - 30, pageHeight - 10, { align: "right" });
+        }
+    }
+
+    addBlock(meParams, 10, y); // Informations de mon entreprise
+    y = 10;
+    addBlock(customerParams, pageWidth - 10, y); // Information entreprise cliente
     jumpBreak();
 
-    addLine(`Devis n°${new Date().valueOf()}`, 10, y);
-    addLine(`Réalisé le ${new Date().toLocaleDateString('fr-FR')}`, 10, y);
-    addLine(`Ce devis est valable ${maxDays} jours`, 10, y);
+    y = addTextWithAutoHeight(doc, `Devis n°${new Date().valueOf()}`, 10, y);
+    y = addTextWithAutoHeight(doc, `Réalisé le ${new Date().toLocaleDateString('fr-FR')}`, 10, y);
+    y = addTextWithAutoHeight(doc, `Ce devis est valable ${maxDays} jours`, 10, y);
     jumpBreak();
 
     // Tableau des produits
@@ -170,17 +178,17 @@ async function printPdf() {
             4: { halign: "right" }  // TTC aligné à droite
         }
     });
-    lineBreak(1 + (basket.length * 2) + (3*2));
+    y = doc.lastAutoTable.finalY + 10;
     jumpBreak();
 
     // Mentions légales
     doc.setTextColor(0, 0, 0, 0.7);
     doc.setFont("helvetica", "bold");
-    doc.text("Mentions Légales :", 10, y);
+    y = addTextWithAutoHeight(doc, "Mentions Légales :", 10, y);
     doc.setFont("helvetica", "italic");
-    doc.text(`Délai maximum de paiement: ${maxDays} jours`, 10, y + 10);
-    doc.text(`${legals}`, 10, y + 20, { maxWidth: 180 }); // Limite la largeur du texte
-
+    y = addTextWithAutoHeight(doc, `Délai maximum de paiement: ${maxDays} jours`, 10, y);
+    y = addTextWithAutoHeight(doc, legals, 10, y, { maxWidth: 180 });
+    addFooter()
     // Télécharger le PDF
     doc.save("devis.pdf");
 }
