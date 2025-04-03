@@ -19,14 +19,12 @@ class Formulaire {
         this.my_postalcode = document.getElementById("my_postalcode");
         this.my_city = document.getElementById("my_city");
         this.my_phonenumber = document.getElementById("my_phonenumber");
-        this.my_logo = document.getElementById("my_logo");
         
         this.customer_company_name = document.getElementById("customer_company_name");
         this.customer_adress = document.getElementById("customer_adress");
         this.customer_postalcode = document.getElementById("customer_postalcode");
         this.customer_city = document.getElementById("customer_city");
         this.customer_phonenumber = document.getElementById("customer_phonenumber");
-        this.customer_logo = document.getElementById("customer_logo");
         
         this.product_name = document.getElementById("product_name");
         this.product_quantity = document.getElementById("product_quantity");
@@ -42,7 +40,6 @@ class Formulaire {
             this.my_postalcode, 
             this.my_city, 
             this.my_phonenumber, 
-            this.my_logo
         ];
         this.inputsCustomerDatas = [
             this.customer_company_name, 
@@ -50,7 +47,6 @@ class Formulaire {
             this.customer_postalcode, 
             this.customer_city, 
             this.customer_phonenumber, 
-            this.customer_logo
         ];
         this.inputsProductDatas = [
             this.product_name, 
@@ -101,7 +97,6 @@ class Formulaire {
             sessionStorage.setItem("my_postalcode", this.inputsMyDatas[2].value);
             sessionStorage.setItem("my_city", this.inputsMyDatas[3].value);
             sessionStorage.setItem("my_phonenumber", this.inputsMyDatas[4].value);
-            sessionStorage.setItem("my_logo", this.inputsMyDatas[5].value);
 
             return true;
         } else {
@@ -126,7 +121,6 @@ class Formulaire {
             sessionStorage.setItem("customer_postalcode", this.inputsCustomerDatas[2].value);
             sessionStorage.setItem("customer_city", this.inputsCustomerDatas[3].value);
             sessionStorage.setItem("customer_phonenumber", this.inputsCustomerDatas[4].value);
-            sessionStorage.setItem("customer_logo", this.inputsCustomerDatas[5].value);
 
             return true;
         } else {

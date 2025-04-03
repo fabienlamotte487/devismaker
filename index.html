@@ -21,38 +21,33 @@
     </header>
     <main>
         <section class="white-block">
-            <h2>Vos Informations de Contact</h2>
+            <h2>Vos informations de contact</h2>
             <form id="my_datas">
                 <div class="columned">
                     <div>
                         <div>
-                            <label for="my_company_name">Nom de l’entreprise*</label>
+                            <label for="my_company_name">Nom de l’entreprise<span aria-hidden="true">*</span></label>
                             <input type="text" id="my_company_name" name="my_company_name" required aria-required="true" placeholder="" />
                         </div>
                         <div>
-                            <label for="my_adress">Adresse*</label>
-                            <input type="text" id="my_adress" name="my_adress" required aria-required="true" placeholder="" />
-                        </div>
-                        <div class="columned">
-                            <div>
-                                <label for="my_postalcode">Code postal*</label>
-                                <input type="text" id="my_postalcode" name="my_postalcode" data-verif="postalcode" required aria-required="true" placeholder="" />
-                            </div>
-                            <div>
-                                <label for="my_city">Ville*</label>
-                                <input type="text" id="my_city" name="my_city" required aria-required="true" placeholder="" />
-                            </div>
-                        </div>
-                        <div>
-                            <label for="my_phonenumber">Numéro de téléphone*</label>
+                            <label for="my_phonenumber">Numéro de téléphone<span aria-hidden="true">*</span></label>
                             <input type="tel" id="my_phonenumber" name="my_phonenumber" data-verif="phonenumber" required aria-required="true" placeholder="" />
                         </div>
                     </div>
                     <div>
                         <div>
-                            <label for="my_logo">Logo</label>
-                            <input type="file" id="my_logo" name="my_logo" class="logo-file-input"  />
-                            <img src="" data_prev="my_logo" class="logo-prev" alt="" title="" />
+                            <label for="my_adress">Adresse<span aria-hidden="true">*</span></label>
+                            <input type="text" id="my_adress" name="my_adress" required aria-required="true" placeholder="" />
+                        </div>
+                        <div class="columned">
+                            <div>
+                                <label for="my_postalcode">Code postal<span aria-hidden="true">*</span></label>
+                                <input type="text" id="my_postalcode" name="my_postalcode" data-verif="postalcode" required aria-required="true" placeholder="" />
+                            </div>
+                            <div>
+                                <label for="my_city">Ville<span aria-hidden="true">*</span></label>
+                                <input type="text" id="my_city" name="my_city" required aria-required="true" placeholder="" />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -60,7 +55,7 @@
             </form>
         </section>
         <section class="white-block">
-            <h2>Vos Informations de votre client</h2>
+            <h2>Les informations de votre client</h2>
             <form id="customer_datas">
                 <div class="columned">
                     <div>
@@ -68,6 +63,12 @@
                             <label for="customer_company_name">Nom de l’entreprise<span aria-hidden="true">*</span></label>
                             <input type="text" id="customer_company_name" name="customer_company_name" required aria-required="true" placeholder="" />
                         </div>
+                        <div>
+                            <label for="customer_phonenumber">Numéro de téléphone<span aria-hidden="true">*</span></label>
+                            <input type="tel" id="customer_phonenumber" name="customer_phonenumber" data-verif="phonenumber" required aria-required="true" placeholder="" />
+                        </div>
+                    </div>
+                    <div>
                         <div>
                             <label for="customer_adress">Adresse<span aria-hidden="true">*</span></label>
                             <input type="text" id="customer_adress" name="customer_adress" required aria-required="true" placeholder="" />
@@ -81,17 +82,6 @@
                                 <label for="customer_city">Ville<span aria-hidden="true">*</span></label>
                                 <input type="text" id="customer_city" name="customer_city" required aria-required="true" placeholder="" />
                             </div>
-                        </div>
-                        <div>
-                            <label for="customer_phonenumber">Numéro de téléphone<span aria-hidden="true">*</span></label>
-                            <input type="tel" id="customer_phonenumber" name="customer_phonenumber" data-verif="phonenumber" required aria-required="true" placeholder="" />
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <label for="customer_logo">Logo</label>
-                            <input type="file" id="customer_logo" name="customer_logo" class="logo-file-input"  />
-                            <img src="" data_prev="customer_logo" class="logo-prev" alt="" title="" />
                         </div>
                     </div>
                 </div>
