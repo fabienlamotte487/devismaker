@@ -1,6 +1,6 @@
 class Navigator{
     constructor(){
-        this.page = 1;
+        this.page = 3;
         this.min = 1;
         this.max = document.querySelectorAll("section").length;
         this.prevButton = document.getElementById("previous-button"); // Boutton de retour en arrière
@@ -66,11 +66,20 @@ class Navigator{
                 section.classList.remove("current-page");
                 section.setAttribute("aria-hidden", "true");
             }
+            let targetStep = section.querySelector(".target-step");
+
+            if(targetStep){
+                targetStep.innerHTML = this.getStepForm(index+1);
+            }
         });
     }
 
     getPageIndex(){
         return this.page-1;
+    }
+
+    getStepForm(index){
+        return `Etape <span>${index}</span> sur ${this.max}`;
     }
 
     setNewFocus(){

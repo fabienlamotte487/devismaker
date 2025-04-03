@@ -124,7 +124,7 @@ div input[type="file"]::file-selector-button{
 }
 
 @media screen and (max-width: 992px) {
-    .columned{
+    .columned:not(.force-row){
         flex-direction: column;
         gap:0;
     }

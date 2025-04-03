@@ -53,6 +53,7 @@ section{
     width: 100%; 
     border-radius: 28px;
     padding: 3rem;
+    -webkit-box-shadow: 5px 4px 16px -9px var(--dark); 
     box-shadow: 5px 4px 16px -9px var(--dark);
     align-self: center;
     box-sizing: border-box;
@@ -68,6 +69,7 @@ nav{
     width: auto; 
     border-radius: 28px;
     padding: 1.5rem 2rem;
+    -webkit-box-shadow: 5px 4px 16px -9px var(--dark); 
     box-shadow: 5px 4px 16px -9px var(--dark);
 }
 
@@ -79,8 +81,29 @@ nav{
     column-gap: 2rem;
 }
 
+.columned.between{
+    justify-content: space-between;
+}
+
 .columned > div{
     flex: 1;
+}
+
+.target-step{
+    margin-top: .5rem;
+    padding: .5rem 1rem;
+    border-radius: 30px;
+}
+
+.target-step span{
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.step-block{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 3rem;
 }
 
 .row{
