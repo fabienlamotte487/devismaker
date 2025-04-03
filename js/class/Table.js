@@ -90,9 +90,9 @@ class Table{
                     <button type="button" class="quantity-button plus" data_id="${data.id}">+</button>
                 </div>
             </td>
-            <td>${this.formate_money(data.puht)}</td>
+            <td>${formate_money(data.puht)}</td>
             <td>${data.tva} %</td>
-            <td>${this.formate_money(this.calcul_ttc(data))}</td>
+            <td>${formate_money(calcul_ttc(data))}</td>
             <td>
                 <button type="button" class="edit-button" data_id="${data.id}">
                     <img src="./svg/edit.svg" class="edit-icon" alt="Modifier le produit" title="Modifier le produit" />
@@ -152,28 +152,13 @@ class Table{
 
         datas.forEach(data => {
             totalHT += data.puht * data.quantity;
-            totalTTC += this.calcul_ttc(data);
+            totalTTC += calcul_ttc(data);
             totalTVA += (data.tva / 100) * data.puht * data.quantity;
         });
 
-        this.totalHT.innerHTML = this.formate_money(totalHT);
-        this.totalTTC.innerHTML = this.formate_money(totalTTC);
-        this.totalTVA.innerHTML = this.formate_money(totalTVA);
-    }
-
-    // Calcul le prix TTC d'un produit
-    // @param {Object} data - L'objet contenant les données du produit
-    calcul_ttc(data){
-        return data.puht * data.quantity * (1 + data.tva / 100);
-    }
-
-    // Formate un nombre en euros avec deux décimales
-    // @param {number} value - Le nombre à formater
-    formate_money(value) {
-        let number = parseFloat(value.toString().replace(',', '.'));
-        if (isNaN(number)) return "0,00 €";
-        
-        return number.toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + " €";
+        this.totalHT.innerHTML = formate_money(totalHT);
+        this.totalTTC.innerHTML = formate_money(totalTTC);
+        this.totalTVA.innerHTML = formate_money(totalTVA);
     }
 
     // Affiche la modale de modification d'un produit
