@@ -94,7 +94,7 @@ async function printPdf() {
     // Fonction d'ajout d'une ligne simple
     function addLine(text, xaxe, yaxe){
         doc.text(text, xaxe, yaxe)
-        y += lineSize;
+        lineBreak()
     }
 
     function jumpBreak(){
