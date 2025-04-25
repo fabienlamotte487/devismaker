@@ -26,11 +26,9 @@ body{
 }
 
 header{
-    background-image: url("./../png/headerback.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 260px;
     padding: 2rem;
 }
 
@@ -39,7 +37,8 @@ main{
     justify-content: center;
     align-items: flex-end;
     flex-direction: column;
-    margin: 5rem 20%;
+    margin: 5rem auto;
+    width: 60%;
 }
 
 /* SECTION */
@@ -117,7 +116,7 @@ nav{
 
 @media screen and (max-width: 1200px) {
     main{
-        margin: 0 10%;
+        width: 80%;
     }
 }
 
@@ -126,19 +125,20 @@ nav{
         font-size: var(--presponsive);
     }
     main{
-        margin: 0 5%;
+        width: 90%;
         align-items: center;
     }
     h1{
         font-size: var(--h1responsive);
         margin-top: 3rem;
     }
+    h1 span{
+        color: var(--primary);
+        font-size: var(--h1responsive);
+        font-weight: 700;
+    }
     h2{
         font-size: var(--h2responsive);
-    }
-    header{
-        background-image: url("./../png/headerbackmobile.png");
-        height: 170px;
     }
     button{
         padding: 1rem 3rem;
