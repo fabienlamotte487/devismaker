@@ -11,7 +11,7 @@
 
 Enregistrez un devis au format pdf, renseignez vos informations et celui de votre client, et établissez le devis avec les produits que vous vendez.
 
-Projet en single page réalisé from scratch, sans framework ni backend, utilise essentiellement le cache pour stocker les informations essentielles:
+Projet au design minimaliste en single page réalisé from scratch, sans framework ni backend, utilise essentiellement le cache pour stocker les informations essentielles afin de ne pas avoir à les réécrire plus tard:
 
 Langages:
 - CSS.
