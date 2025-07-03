@@ -27,4 +27,4 @@ Certains point plutôt rapides à corriger sont à prévoir (ci-dessous).
 
 - Modifier l'affichage du tableau lorsqu'aucun produit n'est ajouté.
 - Ajouter un vrai message d'erreur au lieu de l'alerte quand on veut passer à l'étape suivante, sans produit ajouté.
-- Peut-être stocker en cache les produits que l'on a auparavant enregistrer pour proposer l'autocomplétion, car c'est assez laborieux.
+- Peut-être stocker en cache les produits que l'on a auparavant enregistré pour proposer l'autocomplétion, car c'est assez laborieux.
