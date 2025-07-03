@@ -1,7 +1,7 @@
 !! ------ IMPORTANT ------ !!
 
 - Ce projet n'est absolument pas à visée commerciale, il existe pour remplir un portfolio destiné à montrer ce que je sais faire. 
-- Certaines modifications verront surement le jour, complètement mineures, mais aucune ne permettra de le faire évoluer dans un sens commerciale. 
+- Certaines modifications verront surement le jour, complètement mineures, mais aucune n'aura vocation à le faire évoluer dans un sens commercial. 
 - Je décline toute responsabilité concernant l'utilisation de ce repo à des fins commerciales, car il se peut qu'elle ne remplisse pas complètement les exigences d'un devis en bonne et due forme sur le plan légal.
 - Vous pouvez le reprendre, l'améliorer, mais si vous souhaitez l'utiliser, je vous recommande de vous faire accompagné par un expert qualifié afin de vérifier sa légitimité sur le plan légal. D'autre outils gratuits existent également et remplissent cette fonction.
 
@@ -17,3 +17,8 @@ Langages:
 - CSS.
 - HTML.
 - JAVASCRIPT.
+
+**A VENIR**:
+
+- Modifier l'affichage du tableau lorsqu'aucun produit n'est ajouté.
+- Ajouter un vrai message d'erreur au lieu de l'alerte quand on veut passer à l'étape suivante, sans produit ajouté.
