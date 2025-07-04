@@ -20,7 +20,8 @@ Langages:
 
 **Mon ressenti sur le projet**
 
-Je n'ai pas vraiment la fibre design, je me considère comme un pur intégrateur. Aucun défi ne me fait peur du moment que j'ai une maquette et des directives. Seulement comme je suis seul à bord sur ce projet, il est assez cheap. Il fait le taff et il le fait bien, j'ai mis un point d'honneur à le faire le plus accessible au niveau de la navigation au clavier.
+Je n'ai pas vraiment la fibre design, je me considère comme un pur intégrateur, à partir du moment que j'ai une maquette et une communication avec le graphiste, je me sent comme une machine de guerre, je peux tout faire ! 
+Seulement comme je suis seul à bord sur ce projet, il est assez cheap. Il fait le taff et il le fait bien, j'ai mis un point d'honneur à le faire le plus accessible au niveau de la navigation au clavier.
 Certains point plutôt rapides à corriger sont à prévoir (ci-dessous).
 
 **A VENIR**:
